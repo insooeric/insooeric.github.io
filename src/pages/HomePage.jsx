@@ -38,7 +38,7 @@ const HomePage = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://localhost:32775/api/Email/send-email",
+        "https://emailapplication-wgae.onrender.com/api/Email/send-email",
         {
           method: "POST",
           headers: {
@@ -47,7 +47,7 @@ const HomePage = () => {
           body: JSON.stringify({
             senderEmail: emailSender,
             subject: emailSubject,
-            content: emailContent,
+            message: emailContent,
           }),
           credentials: "include",
         }
