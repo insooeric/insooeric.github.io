@@ -38,7 +38,7 @@ const HomePage = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://localhost:7041/api/Email/send-email",
+        "https://localhost:32775/api/Email/send-email",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
