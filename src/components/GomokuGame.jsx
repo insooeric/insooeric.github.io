@@ -130,13 +130,13 @@ const GomokuGame = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://localhost:7160/api/Analyze/minimax-move",
+        "https://gomoku-ai.onrender.com/api/Analyze/minimax-move",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
-            depth: 10,
+            depth: 8,
           }),
           signal: controller.signal,
         }
