@@ -1,11 +1,6 @@
-import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 import "./index.scss";
 import App from "./App.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -15,20 +10,18 @@ import PlaygroundPage from "./pages/PlaygroundPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import store from "./store.js";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/playground" element={<PlaygroundPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Route>
-  )
-);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="playground" element={<PlaygroundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </Provider>
 );
