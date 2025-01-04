@@ -107,8 +107,8 @@ const SelfiPic = () => {
       <div
         style={{
           fontFamily: "monospace",
-          fontSize: "5px",
-          lineHeight: "4.3px",
+          fontSize: "4.3px",
+          lineHeight: "3.5px",
           whiteSpace: "pre",
           letterSpacing: "-1px",
           color: "var(--text-color)",
