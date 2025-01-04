@@ -41,12 +41,15 @@ const HomePage = () => {
         "https://localhost:32775/api/Email/send-email",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             senderEmail: emailSender,
             subject: emailSubject,
             content: emailContent,
           }),
+          credentials: "include", // Include credentials (cookies) if required
         }
       );
 
