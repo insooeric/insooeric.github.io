@@ -105,10 +105,11 @@ const SelfiPic = () => {
   return (
     <>
       <div
+        className="face-pic"
         style={{
           fontFamily: "monospace",
           fontSize: "4.3px",
-          lineHeight: "3.5px",
+          // lineHeight: "3.5px",
           whiteSpace: "pre",
           letterSpacing: "-1px",
           color: "var(--text-color)",

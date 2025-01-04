@@ -894,8 +894,14 @@ body {
       justify-content: center;
       align-items: center;
 
-      .svg_icon {
-        color: var(--github-text);
+      .face-pic {
+        line-height: 3.5px;
+      }
+
+      @media (max-width: 500px) {
+        .face-pic {
+          line-height: 4px;
+        }
       }
     }
 
