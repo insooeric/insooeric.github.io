@@ -28,7 +28,7 @@ const ProjectsPage = () => {
   const handleDefaultClick = (val) => {
     switch (val) {
       case "webarcade":
-        window.open("https://github.com/insooeric/WebArcade", "_blank");
+        window.open("https://github.com/insooeric/WebArcade#readme", "_blank");
         break;
       case "cacatua":
         break;
@@ -43,11 +43,11 @@ const ProjectsPage = () => {
       case "recorder":
         break;
       case "gridshot":
-        window.open("https://github.com/insooeric/WackAFood", "_blank");
+        window.open("https://github.com/insooeric/WackAFood#readme", "_blank");
         break;
     }
 
-    window.open("https://github.com/insooeric/default-repo", "_blank");
+    window.open("https://github.com/insooeric/default-repo#readme", "_blank");
   };
   return (
     <>
