@@ -49,7 +49,7 @@ const HomePage = () => {
             subject: emailSubject,
             content: emailContent,
           }),
-          credentials: "include", // Include credentials (cookies) if required
+          credentials: "include",
         }
       );
 
