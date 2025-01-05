@@ -98,6 +98,7 @@ $inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--top-left-shadow),
   }
   .bar-first {
     display: flex;
+    width: 20%;
   }
   .bar-second {
     @include prefix(animation, bar-fill 1s);
