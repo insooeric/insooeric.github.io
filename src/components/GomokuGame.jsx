@@ -27,7 +27,7 @@ const GomokuGame = () => {
     const handleResize = () => {
       const isSmallScreen = window.innerWidth < 768;
       setBoardSize(isSmallScreen ? 10 : 15);
-      setCellSize(isSmallScreen ? 25 : 30);
+      setCellSize(30);
       setChessBoard(
         Array(isSmallScreen ? 10 : 15)
           .fill(0)
@@ -120,13 +120,6 @@ const GomokuGame = () => {
     return 0;
   };
 
-  const getTouchCoordinates = (touch, canvas) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    return { x, y };
-  };
-
   const callMinimaxAPI = async () => {
     setIsAIPlaying(true);
 
@@ -137,19 +130,15 @@ const GomokuGame = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        // "https://gomoku-ai.onrender.com/api/Game/minimax-move",
-        "https://localhost:32787/api/Game/minimax-move",
+        "https://gomoku-ai.onrender.com/api/Game/minimax-move",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
             depth: 8,
           }),
           signal: controller.signal,
-          credentials: "include",
         }
       );
 
@@ -285,44 +274,6 @@ const GomokuGame = () => {
         setIsAIPlaying(false);
         setCurrentPlayer(1);
       };
-
-      chess.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        if (winner !== "N/A" || isAIPlaying) return;
-
-        const touch = e.touches[0];
-        const { x, y } = getTouchCoordinates(touch, chess);
-        const row = Math.floor(y / cellSize);
-        const col = Math.floor(x / cellSize);
-
-        if (row >= 0 && row < boardSize && col >= 0 && col < boardSize) {
-          setChessBoard((prevBoard) => {
-            const newBoard = [...prevBoard.map((r) => [...r])];
-
-            if (newBoard[row][col] === 0) {
-              newBoard[row][col] = currentPlayer;
-
-              const centerX = cellSize / 2 + col * cellSize;
-              const centerY = cellSize / 2 + row * cellSize;
-              context.beginPath();
-              context.arc(centerX, centerY, cellSize / 2 - 2, 0, 2 * Math.PI);
-              context.fillStyle = currentPlayer === 1 ? "#000" : "#FFF";
-              context.fill();
-              context.stroke();
-
-              // Check winner or next turn
-              if (checkGameState(newBoard)) {
-                setWinner(
-                  currentPlayer === 1 ? "Black Wins 🎉" : "White Wins 🎉"
-                );
-              } else {
-                setCurrentPlayer(-currentPlayer);
-              }
-            }
-            return newBoard;
-          });
-        }
-      });
 
       chess.onclick = (e) => {
         if (winner !== "N/A" || isAIPlaying) return;
