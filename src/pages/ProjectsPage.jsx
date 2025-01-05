@@ -22,6 +22,8 @@ import electron_icon from "../img/electron_icon.png";
 import typescript_icon from "../img/typescript_icon.png";
 import firebase_icon from "../img/firebase_icon.png";
 import unity_icon from "../img/unity_icon.png";
+import docker_icon from "../img/docker_icon.png";
+import github from "../img/github.png";
 // import java_icon from "../img/java_icon.png";
 
 const ProjectsPage = () => {
@@ -33,12 +35,21 @@ const ProjectsPage = () => {
       case "cacatua":
         break;
       case "profile":
+        window.open(
+          "https://github.com/insooeric/insooeric.github.io#readme",
+          "_blank"
+        );
         break;
       case "gomokuai":
+        window.open("https://github.com/insooeric/Gomoku-AI#readme", "_blank");
         break;
       case "datingapp":
         break;
       case "tts":
+        window.open(
+          "https://github.com/insooeric/TextToSpeech#readme",
+          "_blank"
+        );
         break;
       case "recorder":
         break;
@@ -102,6 +113,7 @@ const ProjectsPage = () => {
               <div className="tech-stack">
                 <img src={reactJS_icon} alt="ReactJS" />
                 <img src={js_icon} alt="JavaScript" />
+                <img src={github} alt="GitHub" />
               </div>
             </div>
             <div className="box box-2h box-gomoku-ai">
@@ -116,6 +128,7 @@ const ProjectsPage = () => {
               <div className="tech-stack">
                 <img src={cs_icon} alt="C#" />
                 <img src={dotnet_icon} alt="dotnet" />
+                <img src={docker_icon} alt="docker" />
               </div>
             </div>
             <div className="box box box-dating-app">
@@ -148,6 +161,7 @@ const ProjectsPage = () => {
                 <img src={cs_icon} alt="C#" />
                 <img src={dotnet_icon} alt="dotnet" />
                 <img src={firebase_icon} alt="Firebase" />
+                <img src={docker_icon} alt="docker" />
               </div>
             </div>
             <div className="box box box-voice-record">
