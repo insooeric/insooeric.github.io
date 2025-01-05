@@ -10,12 +10,12 @@ const TTSStatistic = () => {
     const fetchStatistics = async () => {
       try {
         const globalResponse = await fetch(
-          "https://texttospeech-i1nd.onrender.com/api/Statistics/global-statistic"
+          "https://texttospeech-1lv9.onrender.com/api/Statistics/global-statistic"
         );
         const globalData = await globalResponse.json();
 
         const languageResponse = await fetch(
-          "https://texttospeech-i1nd.onrender.com/api/Statistics/language-statistic"
+          "https://texttospeech-1lv9.onrender.com/api/Statistics/language-statistic"
         );
         const languageData = await languageResponse.json();
 

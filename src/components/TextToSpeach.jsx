@@ -26,7 +26,7 @@ const TextToSpeech = () => {
       setIsLoading(true);
 
       const response = await fetch(
-        "https://texttospeech-i1nd.onrender.com/api/TextParser/tts-ai",
+        "https://texttospeech-1lv9.onrender.com/api/TextParser/tts-ai",
         {
           method: "POST",
           headers: {
