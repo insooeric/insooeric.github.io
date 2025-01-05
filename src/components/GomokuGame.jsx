@@ -133,14 +133,36 @@ const GomokuGame = () => {
         "https://gomoku-ai.onrender.com/api/Game/minimax-move",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             board: chessBoard,
             depth: 8,
           }),
           signal: controller.signal,
+          credentials: "include",
         }
       );
+
+      /**
+       * 
+       *       const response = await fetch(
+        "https://emailapplication-wgae.onrender.com/api/Email/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            senderEmail: emailSender,
+            subject: emailSubject,
+            message: emailContent,
+          }),
+          credentials: "include",
+        }
+      );
+       */
 
       if (!response.ok) {
         throw new Error("Failed to fetch the minimax move");
