@@ -27,7 +27,7 @@ const GomokuGame = () => {
     const handleResize = () => {
       const isSmallScreen = window.innerWidth < 768;
       setBoardSize(isSmallScreen ? 10 : 15);
-      setCellSize(30);
+      setCellSize(isSmallScreen ? 25 : 30);
       setChessBoard(
         Array(isSmallScreen ? 10 : 15)
           .fill(0)
