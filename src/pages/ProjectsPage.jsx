@@ -44,6 +44,7 @@ const ProjectsPage = () => {
         window.open("https://github.com/insooeric/Gomoku-AI#readme", "_blank");
         break;
       case "datingapp":
+        window.open("https://github.com/insooeric/DatingApp#readme", "_blank");
         break;
       case "tts":
         window.open(
