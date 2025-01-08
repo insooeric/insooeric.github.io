@@ -100,7 +100,7 @@ const GomokuGame = () => {
           const context = chess.getContext("2d");
           const centerX = cellSize / 2 + data.y * cellSize;
           const centerY = cellSize / 2 + data.x * cellSize;
-          animateStone(context, centerX, centerY, data.color === "White");
+          animateStone(context, centerX, centerY, data.color === "Black");
 
           // if (checkGameState(newBoard) == -1) {
           //   setWinner(
