@@ -96,7 +96,7 @@ const GomokuGame = () => {
   const initGame = () => {
     const chess = canvasRef.current;
     const context = chess.getContext("2d");
-    drawChessBoard(context);
+    drawChessBoard();
 
     setChessBoard(
       Array(boardSize)
@@ -150,7 +150,7 @@ const GomokuGame = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log("API Response:", data);
 
       if (data.status === "Win") {
         setWinner(data.message);
@@ -232,6 +232,7 @@ const GomokuGame = () => {
 
     chess.addEventListener("click", handleClick);
 
+    // Cleanup event listener on component unmount
     return () => {
       chess.removeEventListener("click", handleClick);
     };
