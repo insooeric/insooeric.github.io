@@ -1,45 +1,49 @@
 /* eslint-disable no-self-assign */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../gomokugame.scss";
 import ai_thinking_pic from "../img/ai_thinking_pic.jpg";
 
 const GomokuGame = () => {
+  // State variables
   const [boardSize, setBoardSize] = useState(window.innerWidth < 768 ? 10 : 15);
   const [cellSize, setCellSize] = useState(30);
   const [winner, setWinner] = useState("N/A");
   const [chessBoard, setChessBoard] = useState(
-    Array(boardSize)
+    Array(window.innerWidth < 768 ? 10 : 15)
       .fill(0)
-      .map(() => Array(boardSize).fill(0))
+      .map(() => Array(window.innerWidth < 768 ? 10 : 15).fill(0))
   );
-  const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [currentPlayer, setCurrentPlayer] = useState(1); // 1: Human (Black), -1: AI (White)
   const [isAIPlaying, setIsAIPlaying] = useState(false);
   const [abortController, setAbortController] = useState(null);
 
-  const handleCancel = () => {
-    if (abortController) {
-      abortController.abort();
-      setAbortController(null);
-    }
-  };
+  // Ref for the canvas to avoid using getElementById
+  const canvasRef = useRef(null);
 
+  // Handle window resize to adjust board size
   useEffect(() => {
     const handleResize = () => {
       const isSmallScreen = window.innerWidth < 768;
-      setBoardSize(isSmallScreen ? 10 : 15);
+      const newSize = isSmallScreen ? 10 : 15;
+      setBoardSize(newSize);
       setCellSize(30);
       setChessBoard(
-        Array(isSmallScreen ? 10 : 15)
+        Array(newSize)
           .fill(0)
-          .map(() => Array(isSmallScreen ? 10 : 15).fill(0))
+          .map(() => Array(newSize).fill(0))
       );
+      setWinner("N/A");
+      setCurrentPlayer(1);
+      drawChessBoard(); // Redraw board on resize
     };
 
+    handleResize(); // Initialize on mount
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const animateStone = (context, x, y, me) => {
+  // Function to animate a stone on the board
+  const animateStone = (context, x, y, isBlack) => {
     const gradient = context.createRadialGradient(
       x + 2,
       y - 2,
@@ -48,8 +52,8 @@ const GomokuGame = () => {
       y - 2,
       0
     );
-    gradient.addColorStop(0, me ? "#0A0A0A" : "#D1D1D1");
-    gradient.addColorStop(1, me ? "#636766" : "#F9F9F9");
+    gradient.addColorStop(0, isBlack ? "#0A0A0A" : "#D1D1D1");
+    gradient.addColorStop(1, isBlack ? "#636766" : "#F9F9F9");
 
     context.save();
     context.beginPath();
@@ -60,6 +64,65 @@ const GomokuGame = () => {
     context.restore();
   };
 
+  // Function to draw the chessboard grid
+  const drawChessBoard = () => {
+    const chess = canvasRef.current;
+    const context = chess.getContext("2d");
+    context.clearRect(0, 0, chess.width, chess.height); // Clear canvas before drawing
+    context.strokeStyle = "#8F8F8F";
+    context.lineWidth = 1;
+
+    for (let i = 0; i < boardSize; ++i) {
+      // Vertical lines
+      context.beginPath();
+      context.moveTo(cellSize / 2 + i * cellSize, cellSize / 2);
+      context.lineTo(
+        cellSize / 2 + i * cellSize,
+        boardSize * cellSize - cellSize / 2
+      );
+      context.stroke();
+
+      // Horizontal lines
+      context.beginPath();
+      context.moveTo(cellSize / 2, cellSize / 2 + i * cellSize);
+      context.lineTo(
+        boardSize * cellSize - cellSize / 2,
+        cellSize / 2 + i * cellSize
+      );
+      context.stroke();
+    }
+  };
+
+  // Initialize the game
+  const initGame = () => {
+    const chess = canvasRef.current;
+    const context = chess.getContext("2d");
+    drawChessBoard();
+
+    setChessBoard(
+      Array(boardSize)
+        .fill(0)
+        .map(() => Array(boardSize).fill(0))
+    );
+    setWinner("N/A");
+    setCurrentPlayer(1);
+    setIsAIPlaying(false);
+  };
+
+  // Restart game handler
+  const restartGame = () => {
+    // Abort any ongoing API call
+    if (abortController) {
+      abortController.abort();
+      setAbortController(null);
+      setIsAIPlaying(false);
+    }
+
+    // Reset game state
+    initGame();
+  };
+
+  // Function to call the Minimax API
   const callMinimaxAPI = async () => {
     setIsAIPlaying(true);
 
@@ -88,27 +151,25 @@ const GomokuGame = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log("API Response:", data);
 
-      if (data.status === "Playing") {
+      if (data.status === "Win") {
+        setWinner(data.message);
+      } else if (data.status === "Draw") {
+        setWinner(data.message);
+      } else if (data.status === "Playing") {
         setChessBoard((prevBoard) => {
-          const newBoard = [...prevBoard.map((row) => [...row])];
+          const newBoard = prevBoard.map((row) => [...row]);
 
-          newBoard[data.x][data.y] = data.color === "Black" ? 1 : -1;
+          if (data.x >= 0 && data.y >= 0) {
+            // **Corrected Color Mapping**: Swap the condition to ensure AI places the correct stone color
+            newBoard[data.x][data.y] = data.color === "Black" ? -1 : 1;
 
-          const chess = document.getElementById("chess");
-          const context = chess.getContext("2d");
-          const centerX = cellSize / 2 + data.y * cellSize;
-          const centerY = cellSize / 2 + data.x * cellSize;
-          animateStone(context, centerX, centerY, data.color === "Black");
-
-          // if (checkGameState(newBoard) == -1) {
-          //   setWinner(
-          //     data.player === "Black"
-          //       ? "AI (Black) Wins 🎉"
-          //       : "AI (White) Wins 🎉"
-          //   );
-          // }
+            const context = canvasRef.current.getContext("2d");
+            const centerX = cellSize / 2 + data.y * cellSize;
+            const centerY = cellSize / 2 + data.x * cellSize;
+            animateStone(context, centerX, centerY, data.color === "Black");
+          }
 
           return newBoard;
         });
@@ -118,6 +179,7 @@ const GomokuGame = () => {
         console.log("API call aborted by AbortController.");
       } else {
         console.error("Unhandled error in API call:", error);
+        // Optionally, set an error state to display a message to the user
       }
     } finally {
       setIsAIPlaying(false);
@@ -125,172 +187,75 @@ const GomokuGame = () => {
     }
   };
 
+  // Set up event listener for user clicks on the canvas
   useEffect(() => {
-    const wins = [];
-    let count = 0;
+    initGame(); // Initialize game on component mount
 
-    const initData = () => {
-      setChessBoard(
-        Array(boardSize)
-          .fill(0)
-          .map(() => Array(boardSize).fill(0))
-      );
-      setWinner("N/A");
-      for (let i = 0; i < boardSize; ++i) {
-        wins[i] = Array(boardSize)
-          .fill(null)
-          .map(() => []);
-      }
-      count = 0;
+    const chess = canvasRef.current;
+    const context = chess.getContext("2d");
 
-      for (let i = 0; i < boardSize; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i][j + k][count] = true;
-          }
-          count++;
-        }
-      }
-      for (let i = 0; i < boardSize; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[j + k][i][count] = true;
-          }
-          count++;
-        }
-      }
-      for (let i = 0; i < boardSize - 4; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i + k][j + k][count] = true;
-          }
-          count++;
-        }
-      }
-      for (let i = 0; i < boardSize - 4; ++i) {
-        for (let j = boardSize - 1; j > 3; --j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i + k][j - k][count] = true;
-          }
-          count++;
-        }
-      }
-    };
+    const handleClick = (e) => {
+      if (winner !== "N/A" || isAIPlaying) return;
 
-    const drawChessBoard = (context) => {
-      context.strokeStyle = "#8F8F8F";
-      for (let i = 0; i < boardSize; ++i) {
-        context.moveTo(cellSize / 2 + i * cellSize, cellSize / 2);
-        context.lineTo(
-          cellSize / 2 + i * cellSize,
-          boardSize * cellSize - cellSize / 2
-        );
-        context.stroke();
-        context.moveTo(cellSize / 2, cellSize / 2 + i * cellSize);
-        context.lineTo(
-          boardSize * cellSize - cellSize / 2,
-          cellSize / 2 + i * cellSize
-        );
-        context.stroke();
-      }
-    };
+      const rect = chess.getBoundingClientRect();
+      const x = e.clientX - rect.left - cellSize / 2;
+      const y = e.clientY - rect.top - cellSize / 2;
 
-    const isBoardFull = () => {
-      return chessBoard.every((row) => row.every((cell) => cell !== 0));
-    };
+      const row = Math.floor(y / cellSize);
+      const col = Math.floor(x / cellSize);
 
-    const initGame = () => {
-      const chess = document.getElementById("chess");
-      const context = chess.getContext("2d");
+      if (row >= 0 && row < boardSize && col >= 0 && col < boardSize) {
+        setChessBoard((prevBoard) => {
+          const newBoard = prevBoard.map((r) => [...r]);
 
-      initData();
-      setCurrentPlayer(1);
-      drawChessBoard(context);
+          if (newBoard[row][col] === 0) {
+            newBoard[row][col] = currentPlayer;
 
-      document.getElementById("restart").onclick = () => {
-        chess.height = chess.height;
-        initData();
-        drawChessBoard(context);
-        //over = false;
-        setIsAIPlaying(false);
-        setCurrentPlayer(1);
-      };
+            animateStone(
+              context,
+              cellSize / 2 + col * cellSize,
+              cellSize / 2 + row * cellSize,
+              currentPlayer === 1
+            );
 
-      chess.onclick = (e) => {
-        if (winner !== "N/A" || isAIPlaying) return;
+            setCurrentPlayer((player) => -1 * player);
 
-        const rect = chess.getBoundingClientRect();
-        const x = e.clientX - rect.left - cellSize / 2;
-        const y = e.clientY - rect.top - cellSize / 2;
-
-        const row = Math.floor(y / cellSize);
-        const col = Math.floor(x / cellSize);
-
-        if (row >= 0 && row < boardSize && col >= 0 && col < boardSize) {
-          setChessBoard((prevBoard) => {
-            const newBoard = [...prevBoard.map((r) => [...r])];
-
-            if (newBoard[row][col] === 0) {
-              newBoard[row][col] = currentPlayer;
-
-              const centerX = cellSize / 2 + col * cellSize;
-              const centerY = cellSize / 2 + row * cellSize;
-              animateStone(context, centerX, centerY, currentPlayer);
-
-              if (isBoardFull()) {
-                setWinner("It's a Draw 🤝");
-              } else if (checkWin(row, col, newBoard)) {
-                setWinner(
-                  currentPlayer == 1 ? "Black Wins 🎉" : "White Wins 🎉"
-                );
-              }
-
-              setCurrentPlayer((player) => -1 * player);
-            }
-            return newBoard;
-          });
-        }
-      };
-    };
-
-    const checkWin = (x, y, board) => {
-      for (let k = 0; k < count; ++k) {
-        if (wins[x][y][k]) {
-          let playerStones = 0;
-          for (let i = 0; i < boardSize; ++i) {
-            for (let j = 0; j < boardSize; ++j) {
-              if (wins[i][j][k] && board[i][j] === board[x][y]) {
-                playerStones++;
-              }
+            // Trigger AI's move if the game is still ongoing
+            if (currentPlayer === 1) {
+              setTimeout(callMinimaxAPI, 200); // AI makes a move after 200ms
             }
           }
-          if (playerStones === 5) return true;
-        }
+          return newBoard;
+        });
       }
-      return false;
     };
 
-    initGame();
-  }, [boardSize, cellSize]);
+    chess.addEventListener("click", handleClick);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      chess.removeEventListener("click", handleClick);
+    };
+  }, [boardSize, cellSize, winner, isAIPlaying]);
 
   return (
     <div className="gomoku-board">
-      <div className="status">{winner}</div>
+      <div className="status">Winner: {winner}</div>
       <div className="board-wrapper">
         <canvas
+          ref={canvasRef}
           id="chess"
           width={boardSize * cellSize}
           height={boardSize * cellSize}
-          onClick={callMinimaxAPI}
         ></canvas>
         {isAIPlaying && (
           <div className="overlay">
-            <img src={ai_thinking_pic} alt="" />
+            <img src={ai_thinking_pic} alt="AI Thinking" />
           </div>
         )}
       </div>
       <div id="restart">
-        <button className="btn" onClick={handleCancel}>
+        <button className="btn" onClick={restartGame}>
           Restart
         </button>
       </div>
