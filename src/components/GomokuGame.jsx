@@ -154,13 +154,13 @@ const GomokuGame = () => {
         setChessBoard((prevBoard) => {
           const newBoard = [...prevBoard.map((row) => [...row])];
 
-          newBoard[data.x][data.y] = data.color === "Black" ? 1 : -1;
+          newBoard[data.x][data.y] = data.color === "White" ? 1 : -1;
 
           const chess = document.getElementById("chess");
           const context = chess.getContext("2d");
           const centerX = cellSize / 2 + data.y * cellSize;
           const centerY = cellSize / 2 + data.x * cellSize;
-          animateStone(context, centerX, centerY, data.color === "White");
+          animateStone(context, centerX, centerY, data.color === "Black");
 
           // if (checkGameState(newBoard) == -1) {
           //   setWinner(
