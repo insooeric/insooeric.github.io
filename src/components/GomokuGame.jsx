@@ -39,7 +39,7 @@ const GomokuGame = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const animateStone = (context, x, y, isBlack) => {
+  const animateStone = (context, x, y, me) => {
     const gradient = context.createRadialGradient(
       x + 2,
       y - 2,
@@ -48,8 +48,8 @@ const GomokuGame = () => {
       y - 2,
       0
     );
-    gradient.addColorStop(0, isBlack ? "#0A0A0A" : "#D1D1D1");
-    gradient.addColorStop(1, isBlack ? "#636766" : "#F9F9F9");
+    gradient.addColorStop(0, me ? "#0A0A0A" : "#D1D1D1");
+    gradient.addColorStop(1, me ? "#636766" : "#F9F9F9");
 
     context.save();
     context.beginPath();
@@ -67,6 +67,8 @@ const GomokuGame = () => {
     setAbortController(controller);
 
     try {
+      console.log("Starting API call with abort controller.");
+
       const response = await fetch(
         "https://gomoku-ai.onrender.com/api/gomoku/minimax-move",
         {
@@ -86,6 +88,7 @@ const GomokuGame = () => {
       }
 
       const data = await response.json();
+      console.log(data);
 
       if (data.status === "Win") {
         setWinner(data.message);
@@ -94,6 +97,7 @@ const GomokuGame = () => {
       } else if (data.status === "Playing") {
         setChessBoard((prevBoard) => {
           const newBoard = [...prevBoard.map((row) => [...row])];
+
           newBoard[data.x][data.y] = data.color === "Black" ? 1 : -1;
 
           const chess = document.getElementById("chess");
@@ -104,7 +108,6 @@ const GomokuGame = () => {
 
           return newBoard;
         });
-        setCurrentPlayer((player) => -1 * player);
       }
     } catch (error) {
       if (error.name === "AbortError") {
@@ -150,6 +153,13 @@ const GomokuGame = () => {
       setCurrentPlayer(1);
       drawChessBoard(context);
 
+      document.getElementById("restart").onclick = () => {
+        chess.height = chess.height;
+        drawChessBoard(context);
+        setIsAIPlaying(false);
+        setCurrentPlayer(1);
+      };
+
       chess.onclick = (e) => {
         if (winner !== "N/A" || isAIPlaying) return;
 
@@ -169,10 +179,10 @@ const GomokuGame = () => {
 
               const centerX = cellSize / 2 + col * cellSize;
               const centerY = cellSize / 2 + row * cellSize;
-              animateStone(context, centerX, centerY, currentPlayer === 1);
+              animateStone(context, centerX, centerY, currentPlayer);
 
               setCurrentPlayer((player) => -1 * player);
-              setTimeout(callMinimaxAPI, 500); // AI makes a move after 500ms
+              setTimeout(callMinimaxAPI, 200);
             }
             return newBoard;
           });
@@ -185,22 +195,25 @@ const GomokuGame = () => {
 
   return (
     <div className="gomoku-board">
-      <div className="status">Winner: {winner}</div>
+      <div className="status">{winner}</div>
       <div className="board-wrapper">
         <canvas
           id="chess"
           width={boardSize * cellSize}
           height={boardSize * cellSize}
+          onClick={callMinimaxAPI}
         ></canvas>
         {isAIPlaying && (
           <div className="overlay">
-            <img src={ai_thinking_pic} alt="AI Thinking" />
+            <img src={ai_thinking_pic} alt="" />
           </div>
         )}
       </div>
-      <button className="btn" onClick={handleCancel}>
-        Restart
-      </button>
+      <div id="restart">
+        <button className="btn" onClick={handleCancel}>
+          Restart
+        </button>
+      </div>
     </div>
   );
 };
