@@ -130,13 +130,14 @@ const GomokuGame = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://gomoku-ai.onrender.com/api/Game/minimax-move",
+        "https://gomoku-ai.onrender.com/api/gomoku/minimax-move",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
-            depth: 8,
+            depth: 3,
+            ruleType: "renju",
           }),
           signal: controller.signal,
         }
@@ -153,21 +154,21 @@ const GomokuGame = () => {
         setChessBoard((prevBoard) => {
           const newBoard = [...prevBoard.map((row) => [...row])];
 
-          newBoard[data.row][data.column] = data.player === "Black" ? 1 : -1;
+          newBoard[data.x][data.y] = data.color === "Black" ? 1 : -1;
 
           const chess = document.getElementById("chess");
           const context = chess.getContext("2d");
-          const centerX = cellSize / 2 + data.column * cellSize;
-          const centerY = cellSize / 2 + data.row * cellSize;
-          animateStone(context, centerX, centerY, data.player === "Black");
+          const centerX = cellSize / 2 + data.y * cellSize;
+          const centerY = cellSize / 2 + data.x * cellSize;
+          animateStone(context, centerX, centerY, data.color === "White");
 
-          if (checkGameState(newBoard) == -1) {
-            setWinner(
-              data.player === "Black"
-                ? "AI (Black) Wins 🎉"
-                : "AI (White) Wins 🎉"
-            );
-          }
+          // if (checkGameState(newBoard) == -1) {
+          //   setWinner(
+          //     data.player === "Black"
+          //       ? "AI (Black) Wins 🎉"
+          //       : "AI (White) Wins 🎉"
+          //   );
+          // }
 
           return newBoard;
         });
