@@ -48,13 +48,12 @@ const GomokuGame = () => {
       );
     };
 
-    handleCancel();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
+    handleCancel();
     initGame();
   }, [boardSize, cellSize]);
 
