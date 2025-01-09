@@ -1,26 +1,39 @@
 /* eslint-disable no-self-assign */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../gomokugame.scss";
 import ai_thinking_pic from "../img/ai_thinking_pic.jpg";
 
 const GomokuGame = () => {
   const [boardSize, setBoardSize] = useState(window.innerWidth < 768 ? 10 : 15);
   const [cellSize, setCellSize] = useState(30);
-  const [winner, setWinner] = useState("N/A");
+  const [statusText, setStatusText] = useState("(っ°ω°)っ");
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [aiStatus, setAiStatus] = useState(null);
   const [chessBoard, setChessBoard] = useState(
     Array(boardSize)
       .fill(0)
       .map(() => Array(boardSize).fill(0))
   );
-  const [currentPlayer, setCurrentPlayer] = useState(1);
+  const [currentPlayer, setCurrentPlayer] = useState(1); // black = 1, white = -1
   const [isAIPlaying, setIsAIPlaying] = useState(false);
   const [abortController, setAbortController] = useState(null);
+  const canvasRef = useRef(null);
 
   const handleCancel = () => {
     if (abortController) {
       abortController.abort();
       setAbortController(null);
     }
+
+    const chess = canvasRef.current;
+    if (!chess) return;
+    const context = chess.getContext("2d");
+
+    chess.height = chess.height;
+    initData();
+    drawChessBoard(context);
+    setIsAIPlaying(false);
+    setCurrentPlayer(1);
   };
 
   useEffect(() => {
@@ -38,6 +51,18 @@ const GomokuGame = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    initGame();
+  }, [boardSize, cellSize]);
+
+  useEffect(() => {
+    if (!isAIPlaying) {
+      console.log("Black's turn");
+    } else {
+      callMinimaxAPI();
+    }
+  }, [isAIPlaying]);
 
   const animateStone = (context, x, y, me) => {
     const gradient = context.createRadialGradient(
@@ -61,7 +86,8 @@ const GomokuGame = () => {
   };
 
   const callMinimaxAPI = async () => {
-    setIsAIPlaying(true);
+    setStatusText("White's turn");
+    console.log(JSON.stringify(chessBoard));
 
     const controller = new AbortController();
     setAbortController(controller);
@@ -76,7 +102,7 @@ const GomokuGame = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
-            depth: 3,
+            depth: 2,
             ruleType: "renju",
           }),
           signal: controller.signal,
@@ -89,29 +115,30 @@ const GomokuGame = () => {
 
       const data = await response.json();
       console.log(data);
-
-      if (data.status === "Playing") {
+      if (data.x > -1 && data.y > -1) {
         setChessBoard((prevBoard) => {
           const newBoard = [...prevBoard.map((row) => [...row])];
 
           newBoard[data.x][data.y] = data.color === "Black" ? 1 : -1;
 
-          const chess = document.getElementById("chess");
+          const chess = canvasRef.current;
           const context = chess.getContext("2d");
           const centerX = cellSize / 2 + data.y * cellSize;
           const centerY = cellSize / 2 + data.x * cellSize;
           animateStone(context, centerX, centerY, data.color === "Black");
 
-          // if (checkGameState(newBoard) == -1) {
-          //   setWinner(
-          //     data.player === "Black"
-          //       ? "AI (Black) Wins 🎉"
-          //       : "AI (White) Wins 🎉"
-          //   );
-          // }
-
           return newBoard;
         });
+      }
+
+      if (data.status === "Playing") {
+        setStatusText("Black's turn");
+      }
+
+      if (data.status === "Win") {
+        setIsGameOver(true);
+        setAiStatus(data);
+        setStatusText(data.message);
       }
     } catch (error) {
       if (error.name === "AbortError") {
@@ -122,170 +149,99 @@ const GomokuGame = () => {
     } finally {
       setIsAIPlaying(false);
       setAbortController(null);
+      setCurrentPlayer((player) => -1 * player);
     }
   };
 
-  useEffect(() => {
-    const wins = [];
-    let count = 0;
+  const initData = () => {
+    setChessBoard(
+      Array(boardSize)
+        .fill(0)
+        .map(() => Array(boardSize).fill(0))
+    );
+    setStatusText("(っ°ω°)っ");
+    setIsGameOver(false);
+  };
 
-    const initData = () => {
-      setChessBoard(
-        Array(boardSize)
-          .fill(0)
-          .map(() => Array(boardSize).fill(0))
+  const drawChessBoard = (context) => {
+    context.strokeStyle = "#8F8F8F";
+    for (let i = 0; i < boardSize; ++i) {
+      context.moveTo(cellSize / 2 + i * cellSize, cellSize / 2);
+      context.lineTo(
+        cellSize / 2 + i * cellSize,
+        boardSize * cellSize - cellSize / 2
       );
-      setWinner("N/A");
-      for (let i = 0; i < boardSize; ++i) {
-        wins[i] = Array(boardSize)
-          .fill(null)
-          .map(() => []);
-      }
-      count = 0;
+      context.stroke();
+      context.moveTo(cellSize / 2, cellSize / 2 + i * cellSize);
+      context.lineTo(
+        boardSize * cellSize - cellSize / 2,
+        cellSize / 2 + i * cellSize
+      );
+      context.stroke();
+    }
+  };
 
-      for (let i = 0; i < boardSize; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i][j + k][count] = true;
+  const initGame = () => {
+    const chess = canvasRef.current;
+    if (!chess) return;
+    const context = chess.getContext("2d");
+
+    initData();
+    setCurrentPlayer(1);
+    drawChessBoard(context);
+  };
+
+  const handleClick = (e) => {
+    const chess = canvasRef.current;
+    if (!chess || isGameOver) return;
+    const context = chess.getContext("2d");
+
+    if (isAIPlaying) return;
+
+    const rect = chess.getBoundingClientRect();
+    const x = e.clientX - rect.left - cellSize / 2;
+    const y = e.clientY - rect.top - cellSize / 2;
+
+    const row = Math.floor(y / cellSize);
+    const col = Math.floor(x / cellSize);
+
+    if (row >= 0 && row < boardSize && col >= 0 && col < boardSize) {
+      setChessBoard((prevBoard) => {
+        const newBoard = [...prevBoard.map((r) => [...r])];
+
+        if (newBoard[row][col] === 0) {
+          newBoard[row][col] = currentPlayer;
+
+          const centerX = cellSize / 2 + col * cellSize;
+          const centerY = cellSize / 2 + row * cellSize;
+          animateStone(context, centerX, centerY, currentPlayer);
+
+          if (isGameOver) {
+            setStatusText(aiStatus.message);
           }
-          count++;
+
+          setCurrentPlayer((player) => -1 * player);
+          setIsAIPlaying(true);
         }
-      }
-      for (let i = 0; i < boardSize; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[j + k][i][count] = true;
-          }
-          count++;
-        }
-      }
-      for (let i = 0; i < boardSize - 4; ++i) {
-        for (let j = 0; j < boardSize - 4; ++j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i + k][j + k][count] = true;
-          }
-          count++;
-        }
-      }
-      for (let i = 0; i < boardSize - 4; ++i) {
-        for (let j = boardSize - 1; j > 3; --j) {
-          for (let k = 0; k < 5; ++k) {
-            wins[i + k][j - k][count] = true;
-          }
-          count++;
-        }
-      }
-    };
-
-    const drawChessBoard = (context) => {
-      context.strokeStyle = "#8F8F8F";
-      for (let i = 0; i < boardSize; ++i) {
-        context.moveTo(cellSize / 2 + i * cellSize, cellSize / 2);
-        context.lineTo(
-          cellSize / 2 + i * cellSize,
-          boardSize * cellSize - cellSize / 2
-        );
-        context.stroke();
-        context.moveTo(cellSize / 2, cellSize / 2 + i * cellSize);
-        context.lineTo(
-          boardSize * cellSize - cellSize / 2,
-          cellSize / 2 + i * cellSize
-        );
-        context.stroke();
-      }
-    };
-
-    const isBoardFull = () => {
-      return chessBoard.every((row) => row.every((cell) => cell !== 0));
-    };
-
-    const initGame = () => {
-      const chess = document.getElementById("chess");
-      const context = chess.getContext("2d");
-
-      initData();
-      setCurrentPlayer(1);
-      drawChessBoard(context);
-
-      document.getElementById("restart").onclick = () => {
-        chess.height = chess.height;
-        initData();
-        drawChessBoard(context);
-        //over = false;
-        setIsAIPlaying(false);
-        setCurrentPlayer(1);
-      };
-
-      chess.onclick = (e) => {
-        if (winner !== "N/A" || isAIPlaying) return;
-
-        const rect = chess.getBoundingClientRect();
-        const x = e.clientX - rect.left - cellSize / 2;
-        const y = e.clientY - rect.top - cellSize / 2;
-
-        const row = Math.floor(y / cellSize);
-        const col = Math.floor(x / cellSize);
-
-        if (row >= 0 && row < boardSize && col >= 0 && col < boardSize) {
-          setChessBoard((prevBoard) => {
-            const newBoard = [...prevBoard.map((r) => [...r])];
-
-            if (newBoard[row][col] === 0) {
-              newBoard[row][col] = currentPlayer;
-
-              const centerX = cellSize / 2 + col * cellSize;
-              const centerY = cellSize / 2 + row * cellSize;
-              animateStone(context, centerX, centerY, currentPlayer);
-
-              if (isBoardFull()) {
-                setWinner("It's a Draw 🤝");
-              } else if (checkWin(row, col, newBoard)) {
-                setWinner(
-                  currentPlayer == 1 ? "Black Wins 🎉" : "White Wins 🎉"
-                );
-              }
-
-              setCurrentPlayer((player) => -1 * player);
-            }
-            return newBoard;
-          });
-        }
-      };
-    };
-
-    const checkWin = (x, y, board) => {
-      for (let k = 0; k < count; ++k) {
-        if (wins[x][y][k]) {
-          let playerStones = 0;
-          for (let i = 0; i < boardSize; ++i) {
-            for (let j = 0; j < boardSize; ++j) {
-              if (wins[i][j][k] && board[i][j] === board[x][y]) {
-                playerStones++;
-              }
-            }
-          }
-          if (playerStones === 5) return true;
-        }
-      }
-      return false;
-    };
-
-    initGame();
-  }, [boardSize, cellSize]);
+        return newBoard;
+      });
+    }
+  };
 
   return (
     <div className="gomoku-board">
-      <div className="status">{winner}</div>
+      <div className="status">{statusText}</div>
       <div className="board-wrapper">
         <canvas
           id="chess"
+          ref={canvasRef}
           width={boardSize * cellSize}
           height={boardSize * cellSize}
-          onClick={callMinimaxAPI}
+          onClick={handleClick}
         ></canvas>
         {isAIPlaying && (
           <div className="overlay">
-            <img src={ai_thinking_pic} alt="" />
+            <img src={ai_thinking_pic} alt="AI Thinking" />
           </div>
         )}
       </div>
