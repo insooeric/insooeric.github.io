@@ -92,6 +92,10 @@ const GomokuGame = () => {
     const controller = new AbortController();
     setAbortController(controller);
 
+    if (!isAIPlaying) {
+      return;
+    }
+
     try {
       console.log("Starting API call with abort controller.");
 
@@ -102,7 +106,7 @@ const GomokuGame = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
-            depth: 2,
+            depth: 4,
             ruleType: "renju",
           }),
           signal: controller.signal,
@@ -140,6 +144,8 @@ const GomokuGame = () => {
         setAiStatus(data);
         setStatusText(data.message);
       }
+
+      setCurrentPlayer((player) => -1 * player);
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("API call aborted by AbortController.");
@@ -149,7 +155,6 @@ const GomokuGame = () => {
     } finally {
       setIsAIPlaying(false);
       setAbortController(null);
-      setCurrentPlayer((player) => -1 * player);
     }
   };
 
