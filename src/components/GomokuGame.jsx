@@ -101,7 +101,7 @@ const GomokuGame = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://localhost:32769/api/gomoku/minimax-move",
+        "https://gomoku-ai.onrender.com/api/gomoku/minimax-move",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
