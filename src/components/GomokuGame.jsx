@@ -101,13 +101,13 @@ const GomokuGame = () => {
       console.log("Starting API call with abort controller.");
 
       const response = await fetch(
-        "https://gomoku-ai.onrender.com/api/gomoku/minimax-move",
+        "https://localhost:32769/api/gomoku/minimax-move",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             board: chessBoard,
-            depth: 4,
+            depth: 5,
             ruleType: "renju",
           }),
           signal: controller.signal,
@@ -140,7 +140,11 @@ const GomokuGame = () => {
         setStatusText("Black's turn");
       }
 
-      if (data.status === "Win") {
+      if (
+        data.status === "Win" ||
+        data.status === "Lose" ||
+        data.status === "Draw"
+      ) {
         setIsGameOver(true);
         setAiStatus(data);
         setStatusText(data.message);
