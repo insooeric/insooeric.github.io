@@ -4,6 +4,7 @@ import "../gomokugame.scss";
 import ai_thinking_pic from "../img/ai_thinking_pic.jpg";
 
 const GomokuGame = () => {
+  // yeet
   const [boardSize, setBoardSize] = useState(window.innerWidth < 768 ? 10 : 15);
   const [cellSize, setCellSize] = useState(30);
   const [statusText, setStatusText] = useState("(っ°ω°)っ");
