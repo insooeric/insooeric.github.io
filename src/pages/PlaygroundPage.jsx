@@ -1,5 +1,5 @@
 import GomokuGame from "../components/GomokuGame";
-import TextToSpeach from "../components/TextToSpeach";
+import TextToSpeach from "../components/TextToSpeech";
 import OpenAIIcon from "../svgs/OpenAIIcon";
 import TTSStatistic from "../components/TTSStatistic";
 const PlaygroundPage = () => {
@@ -23,7 +23,7 @@ const PlaygroundPage = () => {
           </div>
           <div className="text-to-speach">
             <div className="title-wrapper">
-              <span className="title">Text To Speach</span>
+              <span className="title">Text To Speech</span>
               <div
                 className="logo"
                 onClick={handleOpenAIClick}
@@ -38,7 +38,7 @@ const PlaygroundPage = () => {
           </div>
           <div className="statistics">
             <div className="title-wrapper">
-              <span className="title">Text To Speach Statistics</span>
+              <span className="title">Text To Speech Statistics</span>
             </div>
             <div className="component-container">
               <TTSStatistic />
