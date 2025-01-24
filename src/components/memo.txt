@@ -5,7 +5,7 @@ import "material-icons/iconfont/material-icons.css";
 import ai_thinking_pic from "../img/ai_thinking_pic.jpg";
 import invalidMoves from "../utilities/renjuRule";
 
-const GomokuGame = () => {
+const Deprecate_GomokuGame = () => {
   const [boardSize, setBoardSize] = useState(window.innerWidth < 768 ? 10 : 15);
   const [cellSize, setCellSize] = useState(30);
   const [statusText, setStatusText] = useState("(っ°ω°)っ");
@@ -398,4 +398,4 @@ const GomokuGame = () => {
   );
 };
 
-export default GomokuGame;
+export default Deprecate_GomokuGame;

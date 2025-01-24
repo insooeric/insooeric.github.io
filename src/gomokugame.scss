@@ -32,6 +32,7 @@ body.dark-theme {
     border-radius: 1rem;
     box-shadow: $inner-shadow;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 10px;
     width: 150px;
     text-align: center;
@@ -43,10 +44,35 @@ body.dark-theme {
 
     canvas {
       display: block;
-      margin: 20px auto;
-      border-radius: 1rem;
-      padding: 20px;
       z-index: 1;
+    }
+
+    .forbidden-move-marker {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      cursor: not-allowed;
+
+      img {
+        width: 80%;
+        height: 80%;
+      }
+    }
+
+    .last-move-marker {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      border: 2px green solid;
     }
 
     .overlay {
@@ -76,6 +102,7 @@ body.dark-theme {
   .pannel-label {
     font-size: 1.2rem;
     font-weight: bold;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
@@ -85,7 +112,6 @@ body.dark-theme {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin-bottom: 10px;
   }
 
   .ai-type-control-wrapper {
