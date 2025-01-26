@@ -61,6 +61,12 @@ const GomokuGame = () => {
   // }, [lastMove]);
 
   useEffect(() => {
+    if (currentAI === "minimax-move") {
+      alert("Minimax AI may take longer");
+    }
+  }, [currentAI]);
+
+  useEffect(() => {
     // console.log("Checking forbidden moves");
     if (currentRule === "renju") {
       let forbiddenMoves = invalidMoves(gameBoard, currentPlayer);
