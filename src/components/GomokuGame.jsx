@@ -403,7 +403,7 @@ const GomokuGame = () => {
             className="last-move-marker"
             style={{
               top: lastMove.Row * cellSize + (cellSize / 2 - 6),
-              left: lastMove.Col * cellSize + (cellSize / 2 - 5),
+              left: lastMove.Col * cellSize + (cellSize / 2 - 6),
             }}
           ></div>
         )}
