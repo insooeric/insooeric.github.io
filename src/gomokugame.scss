@@ -71,6 +71,10 @@ body.dark-theme {
       align-items: center;
       justify-content: center;
 
+      width: 10px;
+      aspect-ratio: 1/1;
+      background-color: green;
+
       border-radius: 50%;
       border: 2px green solid;
     }
@@ -252,18 +256,6 @@ body.dark-theme {
     }
   }
 
-  #ai-play-btn {
-    cursor: pointer;
-    text-align: center;
-    width: fit-content;
-    .btn {
-      width: 37px;
-      border-radius: 50%;
-      aspect-ratio: 1 / 1;
-      display: block; // Ensure the element respects width and height
-    }
-  }
-
   #restart {
     cursor: pointer;
     text-align: center;
@@ -274,49 +266,17 @@ body.dark-theme {
     }
   }
 
-  .ai-checkbox {
-    display: flex;
-    justify-content: center;
+  .ai-play {
+    cursor: pointer;
+    text-align: center;
+    width: fit-content;
     margin-top: 10px;
-    input {
-      display: none;
-    }
 
-    &__1 {
-      width: 6rem;
-      display: flex;
-      justify-content: center;
-      label {
-        box-shadow: $shadow;
-        cursor: pointer;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.5rem;
-        width: 2.8rem;
-        height: 2.8rem;
-
-        &:hover i {
-          color: var(--primary-dark);
-        }
-
-        i {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--greyDark);
-          transition: 0.3s ease;
-        }
-      }
-
-      & input:checked {
-        & ~ label {
-          box-shadow: $inner-shadow;
-          i {
-            color: #6d5dfc;
-          }
-        }
-      }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn {
+      border-radius: 1rem;
     }
   }
 

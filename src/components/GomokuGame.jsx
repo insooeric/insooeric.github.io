@@ -4,7 +4,7 @@ import "material-icons/iconfont/material-icons.css";
 import ai_thinking_pic from "../img/ai_thinking_pic.jpg";
 import invalidMoves from "../utilities/renjuRule";
 // import isEmptyBoard from "../utilities/isEmptyBoard";
-import getCurrentPlayer from "../utilities/getCurrentPlayer";
+//import getCurrentPlayer from "../utilities/getCurrentPlayer";
 import forbidden_icon from "../img/forbidden_icon.svg";
 
 const GomokuGame = () => {
@@ -16,23 +16,23 @@ const GomokuGame = () => {
   const [lastMove, setLastMove] = useState({ Row: -1, Col: -1 });
   const [isInitialState, setIsInitialState] = useState(true);
 
-  const [gameBoard, setGameBoard] = useState([
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
-    [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
-  ]);
-  // const [gameBoard, setGameBoard] = useState(
-  //   Array(boardSize)
-  //     .fill(0)
-  //     .map(() => Array(boardSize).fill(0))
-  // );
+  // const [gameBoard, setGameBoard] = useState([
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0],
+  // ]);
+  const [gameBoard, setGameBoard] = useState(
+    Array(boardSize)
+      .fill(0)
+      .map(() => Array(boardSize).fill(0))
+  );
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [isAIPlaying, setIsAIPlaying] = useState(false);
   const [currentAI, setCurrentAI] = useState("mcts-move");
@@ -141,7 +141,6 @@ const GomokuGame = () => {
         placeStoneOnBoard(row, col, currentPlayer);
         setLastMove({ Row: row, Col: col });
         drawStone(context, pixelX, pixelY, currentPlayer);
-        //setLastMove({ row: data.x, col: data.y });
         let nextPlayer = -currentPlayer;
         setCurrentPlayer(nextPlayer);
       }
@@ -165,18 +164,18 @@ const GomokuGame = () => {
 
   // helper functions
   const init = () => {
-    // const newBoard = Array(boardSize)
-    //   .fill(0)
-    //   .map(() => Array(boardSize).fill(0));
+    const newBoard = Array(boardSize)
+      .fill(0)
+      .map(() => Array(boardSize).fill(0));
 
-    // setGameBoard(newBoard);
+    setGameBoard(newBoard);
 
-    const newBoard = gameBoard; // for testing
+    // const newBoard = gameBoard; // for testing
 
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext("2d");
-
+    setCellSize(30); // just in case
     drawGameBoard(context, newBoard);
 
     // for testing
@@ -193,10 +192,6 @@ const GomokuGame = () => {
     setIsGameOver(false);
     setIsAIPlaying(false);
   };
-
-  // *******************************
-  // ******* RUNS STATICALLY *******
-  // *******************************
 
   const drawGameBoard = (context, currentBoard) => {
     context.strokeStyle = "#8F8F8F";
@@ -310,12 +305,12 @@ const GomokuGame = () => {
   };
 
   const getSelectedRowCol = (e) => {
-    console.log(`Dimension: (${e.clientX},${e.clientY})`);
+    // console.log(`Dimension: (${e.clientX},${e.clientY})`);
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    console.log(`Detected: (${x},${y})`);
+    // console.log(`Detected: (${x},${y})`);
 
     const row = Math.floor(y / cellSize);
     const col = Math.floor(x / cellSize);
@@ -338,7 +333,7 @@ const GomokuGame = () => {
 
   const handleReset = () => {
     // Always reset everything, no matter what
-
+    setLastMove({ Row: -1, Col: -1 });
     if (abortController) {
       abortController.abort();
       setAbortController(null);
@@ -355,6 +350,11 @@ const GomokuGame = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     init();
+  };
+
+  const handleAIPlay = () => {
+    // console.log("AI Play called");
+    setIsAIPlaying(true);
   };
 
   // const playAIMove = async () => {
@@ -391,17 +391,16 @@ const GomokuGame = () => {
             <img src={forbidden_icon} />
           </div>
         ))}
-        {/* {(lastMove.Row > -1 && lastMove.Col > -1) ?? (
+        {/* {(lastMove.Row > -1 && lastMove.Col > -1) ?? ( */}
+        {lastMove.Row > -1 && lastMove.Col > -1 && (
           <div
             className="last-move-marker"
             style={{
-              top: lastMove.Row * cellSize,
-              left: lastMove.Col * cellSize,
-              width: cellSize,
-              height: cellSize,
+              top: lastMove.Row * cellSize + (cellSize / 2 - 6),
+              left: lastMove.Col * cellSize + (cellSize / 2 - 6),
             }}
-          />
-        )} */}
+          ></div>
+        )}
       </div>
 
       <div className="pannel-label">AI Models</div>
@@ -476,13 +475,10 @@ const GomokuGame = () => {
           </button>
         </div>
 
-        <div className="ai-checkbox">
-          <div className="ai-checkbox__1">
-            <input id="ai-checkbox-1" type="checkbox" />
-            <label htmlFor="ai-checkbox-1">
-              <i className="material-icons">done</i>
-            </label>
-          </div>
+        <div className="ai-play">
+          <button className="btn" onClick={handleAIPlay}>
+            Play AI
+          </button>
         </div>
       </div>
     </div>

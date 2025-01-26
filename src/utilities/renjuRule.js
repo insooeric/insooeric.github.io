@@ -86,12 +86,135 @@ const HasOverline = (board, player) => {
   return false;
 };
 
+class Direction {
+  constructor(dx, dy) {
+    this.dx = dx;
+    this.dy = dy;
+  }
+}
+
+const isWithinBounds = (row, col, board) => {
+  return row >= 0 && row < board.length && col >= 0 && col < board[0].length;
+};
+
 const CountOpenFours = (board, player) => {
-  return false;
+  let openFours = 0;
+  const directions = [
+    new Direction(0, 1),
+    new Direction(1, 0),
+    new Direction(1, 1),
+    new Direction(-1, 1),
+  ];
+
+  directions.forEach((dir) => {
+    let hasOpenFourInDirection = false;
+
+    for (let x = 0; x < board.length; x++) {
+      for (let y = 0; y < board[0].length; y++) {
+        // Check for four in a row
+        let sequence = true;
+        for (let i = 0; i < 4; i++) {
+          const newX = x + i * dir.dx;
+          const newY = y + i * dir.dy;
+          if (
+            !isWithinBounds(newX, newY, board) ||
+            board[newX][newY] !== player
+          ) {
+            sequence = false;
+            break;
+          }
+        }
+
+        if (sequence) {
+          // Check if both ends are open
+          const beforeX = x - dir.dx;
+          const beforeY = y - dir.dy;
+          const afterX = x + 4 * dir.dx;
+          const afterY = y + 4 * dir.dy;
+
+          const openStart =
+            isWithinBounds(beforeX, beforeY, board) &&
+            board[beforeX][beforeY] === 0;
+          const openEnd =
+            isWithinBounds(afterX, afterY, board) &&
+            board[afterX][afterY] === 0;
+
+          if (openStart && openEnd) {
+            hasOpenFourInDirection = true;
+            break;
+          }
+        }
+      }
+      if (hasOpenFourInDirection) {
+        break;
+      }
+    }
+    if (hasOpenFourInDirection) {
+      openFours++;
+    }
+  });
+
+  return openFours;
 };
 
 const CountOpenThrees = (board, player) => {
-  return false;
+  let openThrees = 0;
+  const directions = [
+    new Direction(0, 1),
+    new Direction(1, 0),
+    new Direction(1, 1),
+    new Direction(-1, 1),
+  ];
+
+  directions.forEach((dir) => {
+    let hasOpenThreeInDirection = false;
+
+    for (let x = 0; x < board.length; x++) {
+      for (let y = 0; y < board[0].length; y++) {
+        // Check for three in a row
+        let sequence = true;
+        for (let i = 0; i < 3; i++) {
+          const newX = x + i * dir.dx;
+          const newY = y + i * dir.dy;
+          if (
+            !isWithinBounds(newX, newY, board) ||
+            board[newX][newY] !== player
+          ) {
+            sequence = false;
+            break;
+          }
+        }
+
+        if (sequence) {
+          // Check ends
+          const beforeX = x - dir.dx;
+          const beforeY = y - dir.dy;
+          const afterX = x + 3 * dir.dx;
+          const afterY = y + 3 * dir.dy;
+
+          const openStart =
+            isWithinBounds(beforeX, beforeY, board) &&
+            board[beforeX][beforeY] === 0;
+          const openEnd =
+            isWithinBounds(afterX, afterY, board) &&
+            board[afterX][afterY] === 0;
+
+          if (openStart && openEnd) {
+            hasOpenThreeInDirection = true;
+            break;
+          }
+        }
+      }
+      if (hasOpenThreeInDirection) {
+        break;
+      }
+    }
+    if (hasOpenThreeInDirection) {
+      openThrees++;
+    }
+  });
+
+  return openThrees;
 };
 
 const invalidMoves = (currentBoard, currentPlayer) => {
