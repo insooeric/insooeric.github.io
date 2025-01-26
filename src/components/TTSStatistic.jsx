@@ -21,8 +21,6 @@ const TTSStatistic = () => {
 
         setGlobalStats(globalData.data);
         setLanguageStats(languageData.data.languages);
-        console.log(JSON.stringify(globalData));
-        console.log(JSON.stringify(languageData));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching statistics:", error);
