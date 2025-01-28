@@ -33,6 +33,10 @@ const ProjectsPage = () => {
         window.open("https://github.com/insooeric/WebArcade#readme", "_blank");
         break;
       case "cacatua":
+        window.open(
+          "https://github.com/insooeric/Cacatua-Description#readme",
+          "_blank"
+        );
         break;
       case "profile":
         window.open(
