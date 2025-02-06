@@ -1073,40 +1073,44 @@ body {
           order: 1;
           padding: 20px;
         }
-        &.box-profile {
+        &.box-badgehub {
           order: 2;
           padding: 20px;
         }
-        &.box-tts {
+        &.box-profile {
           order: 3;
           padding: 20px;
         }
-        &.box-gomoku-ai {
+        &.box-tts {
           order: 4;
           padding: 20px;
         }
-        &.box-dating-app {
+        &.box-gomoku-ai {
           order: 5;
           padding: 20px;
         }
-        &.box-cacatua {
+        &.box-dating-app {
           order: 6;
           padding: 20px;
         }
-        &.box-voice-record {
+        &.box-cacatua {
           order: 7;
           padding: 20px;
         }
-        &.box-maze {
+        &.box-voice-record {
           order: 8;
           padding: 20px;
         }
-        &.box-grid-shot {
+        &.box-maze {
           order: 9;
           padding: 20px;
         }
-        &.box-fruit-ninja {
+        &.box-grid-shot {
           order: 10;
+          padding: 20px;
+        }
+        &.box-fruit-ninja {
+          order: 11;
           padding: 20px;
         }
 
@@ -1268,7 +1272,7 @@ body {
       &.box-webarcade {
         order: 1;
       }
-      &.box-cacatua {
+      &.box-badgehub {
         order: 2;
       }
       &.box-profile {
@@ -1277,22 +1281,22 @@ body {
       &.box-gomoku-ai {
         order: 4;
       }
-      &.box-dating-app {
+      &.box-cacatua {
         order: 5;
       }
-      &.box-tts {
+      &.box-dating-app {
         order: 6;
       }
-      &.box-voice-record {
+      &.box-tts {
         order: 7;
       }
-      &.box-grid-shot {
+      &.box-voice-record {
         order: 8;
       }
-      &.box-fruit-ninja {
+      &.box-grid-shot {
         order: 9;
       }
-      &.box-maze {
+      &.box-fruit-ninja {
         order: 10;
       }
     }

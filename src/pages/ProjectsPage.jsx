@@ -3,6 +3,7 @@ import default_pic from "../img/default_pic.png";
 import webarcade_pic from "../img/webarcade_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import profile_pic from "../img/profile_pic.png";
+import badgehub_pic from "../img/badgehub_pic.png";
 // import maze_pic from "../img/maze_pic.png";
 // import fruit_ninja_pic from "../img/fruit_ninja_pic.png";
 import wack_food_pic from "../img/wack_food_pic.png";
@@ -23,6 +24,9 @@ import typescript_icon from "../img/typescript_icon.png";
 import firebase_icon from "../img/firebase_icon.png";
 import unity_icon from "../img/unity_icon.png";
 import docker_icon from "../img/docker_icon.png";
+import Oauth_icon from "../img/Oauth_icon.png";
+import Vercel_icon from "../img/Vercel_icon.png";
+import onrender_icon from "../img/onrender_icon.png";
 import github from "../img/github.png";
 // import java_icon from "../img/java_icon.png";
 
@@ -31,6 +35,12 @@ const ProjectsPage = () => {
     switch (val) {
       case "webarcade":
         window.open("https://github.com/insooeric/WebArcade#readme", "_blank");
+        break;
+      case "badgehub":
+        window.open(
+          "https://github.com/insooeric/GithubBadge#readme",
+          "_blank"
+        );
         break;
       case "cacatua":
         window.open(
@@ -86,6 +96,26 @@ const ProjectsPage = () => {
                 <img src={reactJS_icon} alt="ReactJS" />
                 <img src={nodeJS_icon} alt="NodeJS" />
                 <img src={js_icon} alt="JavaScript" />
+                <img src={onrender_icon} alt="OnRender" />
+              </div>
+            </div>
+            <div className="box box-2w box-2h box-badgehub">
+              <div className="project-title">Badge Hub</div>
+
+              <div
+                className="project-preview"
+                onClick={() => handleDefaultClick("badgehub")}
+                style={{ cursor: "pointer" }}
+              >
+                <img src={badgehub_pic} alt="BadgeHub" />
+              </div>
+              <div className="tech-stack">
+                <img src={typescript_icon} alt="MongoDB" />
+                <img src={reactJS_icon} alt="ReactJS" />
+                <img src={cs_icon} alt="ReactJS" />
+                <img src={dotnet_icon} alt="ReactJS" />
+                <img src={Oauth_icon} alt="Oauth" />
+                <img src={Vercel_icon} alt="Vercel" />
               </div>
             </div>
             <div className="box box-2w box-2h box-cacatua">
@@ -119,6 +149,9 @@ const ProjectsPage = () => {
                 <img src={reactJS_icon} alt="ReactJS" />
                 <img src={js_icon} alt="JavaScript" />
                 <img src={github} alt="GitHub" />
+                <img src={dotnet_icon} alt="DotNet" />
+                <img src={cs_icon} alt="C Sharp" />
+                <img src={onrender_icon} alt="OnRender" />
               </div>
             </div>
             <div className="box box-2h box-gomoku-ai">
@@ -134,6 +167,7 @@ const ProjectsPage = () => {
                 <img src={cs_icon} alt="C#" />
                 <img src={dotnet_icon} alt="dotnet" />
                 <img src={docker_icon} alt="docker" />
+                <img src={onrender_icon} alt="OnRender" />
               </div>
             </div>
             <div className="box box box-dating-app">
@@ -167,6 +201,7 @@ const ProjectsPage = () => {
                 <img src={dotnet_icon} alt="dotnet" />
                 <img src={firebase_icon} alt="Firebase" />
                 <img src={docker_icon} alt="docker" />
+                <img src={onrender_icon} alt="OnRender" />
               </div>
             </div>
             <div className="box box box-voice-record">
