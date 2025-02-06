@@ -26,7 +26,7 @@ import firebase_icon from "../img/firebase_icon.png";
 import unity_icon from "../img/unity_icon.png";
 import docker_icon from "../img/docker_icon.png";
 import Oauth_icon from "../img/Oauth_icon.png";
-import Vercel_icon from "../img/Vercel_icon.png";
+import vercel_icon from "../img/vercel_icon.png";
 import onrender_icon from "../img/onrender_icon.png";
 import github from "../img/github.png";
 // import java_icon from "../img/java_icon.png";
@@ -116,7 +116,7 @@ const ProjectsPage = () => {
                 <img src={cs_icon} alt="ReactJS" />
                 <img src={dotnet_icon} alt="ReactJS" />
                 <img src={Oauth_icon} alt="Oauth" />
-                <img src={Vercel_icon} alt="Vercel" />
+                <img src={vercel_icon} alt="Vercel" />
               </div>
             </div>
             <div className="box box-2w box-2h box-cacatua">
