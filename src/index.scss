@@ -346,15 +346,15 @@ body {
             }
           }
 
-          .circle__expand-btn:hover + .circle__label {
-            transform: scaleX(1);
-            color: var(--primary-light);
-          }
+          // .circle__expand-btn:hover + .circle__label {
+          //   transform: scaleX(1);
+          //   color: var(--primary-light);
+          // }
 
-          .circle__expand-btn:hover + .circle__label::after {
-            transform: scaleX(1);
-            color: var(--primary-dark);
-          }
+          // .circle__expand-btn:hover + .circle__label::after {
+          //   transform: scaleX(1);
+          //   color: var(--primary-dark);
+          // }
 
           &__back-1,
           &__back-2 {

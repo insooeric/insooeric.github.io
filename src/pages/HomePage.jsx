@@ -151,7 +151,7 @@ const HomePage = () => {
             <button className="circle__expand-btn">
               <img src={githubIcon} alt="GitHub Icon" />
             </button>
-            <span className="circle__label">GitHub</span>
+            {/* <span className="circle__label">GitHub</span> */}
           </div>
         </div>
         <div className={`box box-skills ${isScreen600 ? "box-2w" : "box-2h"}`}>
