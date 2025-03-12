@@ -148,7 +148,7 @@ const HomePage = () => {
             </span>
             <span className="circle__back-1"></span>
             <span className="circle__back-2"></span>
-            <button className="circle__expand-btn">
+            <button className="img-container">
               <img src={githubIcon} alt="GitHub Icon" />
             </button>
             {/* <span className="circle__label">GitHub</span> */}
