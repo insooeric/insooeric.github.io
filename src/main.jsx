@@ -9,6 +9,7 @@ import PlaygroundPage from "./pages/PlaygroundPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import store from "./store.js";
 import "./index.scss";
+import "./sd-style.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>

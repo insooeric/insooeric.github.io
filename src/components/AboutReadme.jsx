@@ -15,14 +15,14 @@ const AboutReadme = () => {
     <>
       <h2>About Me</h2>
       <div className="divider" />
-      <div className="selfi-container">
+      <div className="selfie-container">
         <SelfiPic />
       </div>
       <p>
-        Hey, my name is <span className="name">Insoo Son</span>
+        Hey, this is <span className="name">Insoo Son</span>
         <br />I am a Computer Science graduate with hands-on experience in
-        Full-Stack development from South Korea, living in Canada. I am a deep
-        learner, always passionate about leveraging my abilities.
+        Full-Stack development from Canada. I am a deep learner, always
+        passionate about leveraging my abilities.
         <br />
         <span className="hidden-wrapper">
           <RightArrowIcon className="icon" />

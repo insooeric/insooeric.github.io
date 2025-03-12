@@ -22,7 +22,7 @@ import SunIcon from "../svgs/SunIcon";
 
 // other pics
 import webarcade_pic from "../img/webarcade_pic.png";
-import cacatua_pic from "../img/cacatua_pic.png";
+import stemma_pic from "../img/stemma_pic.png";
 import DocumentIcon from "../svgs/DocumentIcon";
 import ResumePDF from "../files/Resume.pdf";
 
@@ -32,6 +32,26 @@ const HomePage = () => {
   const [emailSender, setEmailSender] = useState("");
   const [emailSubject, setEmailSubject] = useState("");
   const [emailContent, setEmailContent] = useState("");
+  const [isScreen600, setIsScreen600] = useState(window.innerWidth <= 600);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // console.log(`Current window width: ${window.innerWidth}`);
+      setIsScreen600(window.innerWidth <= 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // useEffect(() => {
+  //   if (isScreen600) {
+  //     console.log("screen is <= 600");
+  //   } else {
+  //     console.log("yeet");
+  //   }
+  // }, [isScreen600]);
 
   const sendEmail = async () => {
     try {
@@ -134,7 +154,7 @@ const HomePage = () => {
             <span className="circle__label">GitHub</span>
           </div>
         </div>
-        <div className="box box-2h box-skills">
+        <div className={`box box-skills ${isScreen600 ? "box-2w" : "box-2h"}`}>
           <div className="skills-grid">
             <img src={cs_icon} alt="C#" />
             <img src={dotnet_icon} alt=".NET" />
@@ -202,9 +222,9 @@ const HomePage = () => {
             onClick={handleProject2Click}
             style={{ cursor: "pointer" }}
           >
-            <h2>Cacatua</h2>
+            <h2>Stamma</h2>
             <div className="project-preview">
-              <img src={cacatua_pic} alt="Cacatua" />
+              <img src={stemma_pic} alt="Cacatua" />
             </div>
           </div>
         </div>
@@ -221,7 +241,7 @@ const HomePage = () => {
             <span>features</span>, and the occasional crash into{" "}
             <span>&apos;intentional design choices&apos;</span>.
           </p>
-          <em>I dare you if you click this</em>
+          <em>CLICK ME!</em>
         </div>
         <div className="box box-mail">
           <form
