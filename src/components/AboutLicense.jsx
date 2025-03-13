@@ -1,5 +1,6 @@
 import UpArrowIcon from "../svgs/UpArrowIcon";
 import PuzzleGame from "./PuzzleGame";
+import SwitchGame from "./SwitchGame";
 
 const AboutLicense = () => {
   const handleScrollToTop = () => {
@@ -25,8 +26,8 @@ const AboutLicense = () => {
           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION <br />
           are usually applied in various github projects, but not in here.
           <br />
-          HUGE DISCLAIMER THAT I&apos;M GONNA TALK ABOUT ANYTHING BEYOND THIS
-          POINT.
+          HUGE DISCLAIMER THAT I&apos;M GONNA PUT SOMETHING COOL AND TALK ABOUT
+          ANYTHING BEYOND THIS POINT.
           <br />
           LITERALLY ANYTHING. SO YOU MAY SKIP IT.
           <br />
@@ -41,19 +42,10 @@ const AboutLicense = () => {
           </p>
           <br />
           2. Grant of Copyright License. <br />
-          <p>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>You probably wondered if
-            I&apos;m really going to mention the real policy on this page, but I
-            won&apos;t. It&apos;s going to be too long and boring to read; I
-            guarantee that you&apos;d find it more worthwhile to take a nap
-            instead. Lowkey, I believe those bloody long policy documents exist
-            to be skipped, though some might say, &quot;iT&apos;S ReAlLy
-            iMpOrTaNt tO ReAd wOrD By wOrD, LiNe bY LiNe, AnD FuLlY UnDeRsTaNd
-            wHaT YoU&apos;rE DoInG. &quot; And sure, yeah, I agree when it comes
-            to dealing with some serious documents. But let&apos;s be honest. We
-            mindlessly consent to 90% of those Terms and Policies without
-            reading them. I mean... at least I do.
-          </p>
+          <p>{"// Ok, let's make something cool 🚀HERE🚀"}</p>
+          <div className="game-container">
+            <SwitchGame />
+          </div>
           <br />
           3. Grant of Patent License. <br />
           <p>

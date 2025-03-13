@@ -47,8 +47,7 @@ const AboutReadme = () => {
       <div className="divider" />
       <h3>Prerequisites</h3>
       <ul>
-        <li>
-          coffee
+        <li style={{ listStyleType: "none" }}>
           <div className="code-block">
             npm install coffee@drink --while-looking-around
           </div>
@@ -97,7 +96,6 @@ const AboutReadme = () => {
           >
             <li className="narrow-li">- Fanshawe College🎓</li>
             <li className="narrow-li">- Computer Programming and Analysis</li>
-            <li className="narrow-li">- Advanced Diploma</li>
           </ul>
         </li>
       </ul>

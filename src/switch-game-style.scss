@@ -1,0 +1,54 @@
+.game-canvas {
+  border: 2px red solid;
+
+  .container {
+    .toggle {
+      background-color: lightblue;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.1);
+      line-height: 1;
+    }
+
+    .toggle:has(.input:checked) {
+      background-color: rgb(0, 159, 212);
+      transition: ease-in 0.5s;
+    }
+
+    .toggle:not(:has(.input:checked)) {
+      background-color: rgb(0, 0, 0);
+      transition: ease-in 0.5s;
+    }
+
+    .input {
+      display: none;
+    }
+
+    .icon {
+      grid-column: 1 / 1;
+      grid-row: 1 / 1;
+      transition: transform 500ms;
+    }
+
+    .icon--moon {
+      transition-delay: 200ms;
+    }
+
+    .icon--sun {
+      transform: scale(0);
+    }
+
+    .input:checked + .icon--moon {
+      transform: rotate(360deg) scale(0);
+    }
+
+    .input:checked ~ .icon--sun {
+      transition-delay: 200ms;
+      transform: scale(1) rotate(360deg);
+    }
+  }
+}

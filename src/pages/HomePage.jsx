@@ -24,6 +24,7 @@ import SunIcon from "../svgs/SunIcon";
 import webarcade_pic from "../img/webarcade_pic.png";
 import stemma_pic from "../img/stemma_pic.png";
 import DocumentIcon from "../svgs/DocumentIcon";
+import DownloadIcon from "../svgs/DownloadIcon";
 import ResumePDF from "../files/Resume.pdf";
 
 const HomePage = () => {
@@ -133,7 +134,15 @@ const HomePage = () => {
           problems.
           <div className="resume-btn">
             <a href={ResumePDF} download="Resume.pdf">
-              <DocumentIcon />
+              <div className="tooltip-container">
+                <span className="tooltip">Resume</span>
+                <span className="text">
+                  <DocumentIcon />
+                </span>
+                <span>
+                  <DownloadIcon />
+                </span>
+              </div>
             </a>
           </div>
         </div>

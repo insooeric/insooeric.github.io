@@ -4,7 +4,7 @@ import default_pic from "../img/default_pic.png";
 import webarcade_pic from "../img/webarcade_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import profile_pic from "../img/profile_pic.png";
-import badgehub_pic from "../img/badgehub_pic.png";
+import stemma_pic from "../img/stemma_pic.png";
 // import maze_pic from "../img/maze_pic.png";
 // import fruit_ninja_pic from "../img/fruit_ninja_pic.png";
 import wack_food_pic from "../img/wack_food_pic.png";
@@ -108,7 +108,7 @@ const ProjectsPage = () => {
                 onClick={() => handleDefaultClick("badgehub")}
                 style={{ cursor: "pointer" }}
               >
-                <img src={badgehub_pic} alt="BadgeHub" />
+                <img src={stemma_pic} alt="BadgeHub" />
               </div>
               <div className="tech-stack">
                 <img src={typescript_icon} alt="MongoDB" />
