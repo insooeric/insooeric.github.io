@@ -6,8 +6,10 @@ import solve from "./switch-game-mcts";
 
 const SwitchGame = () => {
   const [switchState, setSwitchState] = useState([]);
+  // solved, mixing, mixed, solving
+  const [gameState, setGameState] = useState("solved");
   const [isMixing, setIsMixing] = useState(false);
-  const [isMixed, setIsMixed] = useState(false);
+  // const [isMixed, setIsMixed] = useState(false);
   useEffect(() => {
     const switches = [];
     for (let num = 0; num < 8; num++) {
@@ -18,21 +20,25 @@ const SwitchGame = () => {
 
   useEffect(() => {
     const anyOff = switchState.some((switchItem) => !switchItem.isOn);
-    setIsMixed(anyOff);
+    if (anyOff && !isMixing) {
+      setGameState("mixed");
+    } else if (!anyOff) {
+      setGameState("solved");
+    }
   }, [switchState]);
 
-  useEffect(() => {
-    if (isMixed) {
-      console.log("Is mixed");
-    } else {
-      console.log("Not mixed");
-    }
-  }, [isMixed]);
+  // useEffect(() => {
+  //   if (isMixed) {
+  //     console.log("Is mixed");
+  //   } else {
+  //     console.log("Not mixed");
+  //   }
+  // }, [isMixed]);
 
-  useEffect(() => {
-    let asdf = solve();
-    console.log(asdf);
-  }, []);
+  // useEffect(() => {
+  //   let asdf = solve();
+  //   console.log(asdf);
+  // }, []);
 
   // useEffect(() => {
   //   console.log(switchState);
@@ -47,6 +53,8 @@ const SwitchGame = () => {
   };
 
   const handleMix = () => {
+    setGameState("mixing");
+    setIsMixing(true);
     for (let i = 0; i < 10; i++) {
       setTimeout(() => {
         const randomIndex = Math.floor(Math.random() * 8);
@@ -55,10 +63,24 @@ const SwitchGame = () => {
         gameLogic(randomSwitch);
 
         if (i === 9) {
+          setGameState("mixed");
           setIsMixing(false);
         }
       }, i * 600);
     }
+  };
+
+  const handleSolve = () => {
+    console.log("solve checkpoint");
+    let sequence = solve(switchState);
+    let delayGap = 0;
+    sequence.forEach((switchName) => {
+      delayGap++;
+      setTimeout(() => {
+        gameLogic(switchName);
+      }, delayGap * 600);
+    });
+    console.log(sequence);
   };
 
   const gameLogic = (switchName) => {
@@ -142,9 +164,20 @@ const SwitchGame = () => {
         <p>
           Introducing SWITCH GAME!!
           <br />
-          {!isMixed
-            ? 'Press "Mix it" button to mix buttons.'
-            : "Click buttons to turn all lights on."}
+          {(() => {
+            switch (gameState) {
+              case "solved":
+                return 'Press "Mix it" button to mix buttons.';
+              case "mixing":
+                return "Mixing the puzzle...";
+              case "mixed":
+                return 'Click buttons to turn all lights on or click "Solve" to solve the puzzle with AI';
+              case "solving":
+                return "Solving the puzzle with AI...";
+              default:
+                return "";
+            }
+          })()}
         </p>
 
         <div className="container">
@@ -157,7 +190,7 @@ const SwitchGame = () => {
               <input
                 id={`${switchItem.switchName}`}
                 className="input"
-                disabled={isMixing}
+                disabled={gameState === "mixing" || gameState === "solving"}
                 type="checkbox"
                 checked={switchItem.isOn}
                 onChange={(e) => {
@@ -179,13 +212,32 @@ const SwitchGame = () => {
         <div className="btn-pannel">
           <button
             className="mix-btn"
-            disabled={isMixing}
+            disabled={gameState === "mixing" || gameState === "solving"}
             onClick={() => {
-              setIsMixing(true);
-              handleMix();
+              if (gameState === "solved") {
+                setGameState("mixing");
+                handleMix();
+              }
+              if (gameState === "mixed") {
+                handleSolve();
+              }
             }}
           >
-            {isMixing ? "Mixing..." : "Mix it"}
+            {(() => {
+              console.log(gameState);
+              switch (gameState) {
+                case "solved":
+                  return "Mix it";
+                case "mixing":
+                  return "Mixing...";
+                case "mixed":
+                  return "Solve";
+                case "solving":
+                  return "Solving...";
+                default:
+                  return "";
+              }
+            })()}
           </button>
         </div>
       </div>
