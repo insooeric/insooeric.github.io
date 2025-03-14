@@ -127,15 +127,15 @@ const mcts = (rootState, iterations = 10000, maxDepth = 10) => {
 };
 
 const solve = (switchState) => {
-  console.log("-----------------");
-  console.log("Input switch state:", switchState);
+  // console.log("-----------------");
+  // console.log("Input switch state:", switchState);
   let initialState = new Map();
   switchState.forEach((switchItem) => {
     let switchIndex = parseInt(switchItem.switchName.replace("switch", ""));
     let isOn = switchItem.isOn;
     initialState.set(switchIndex, isOn);
   });
-  console.log("Initial state:", initialState);
+  // console.log("Initial state:", initialState);
 
   // limitations
   const iterations = 10000;
@@ -144,8 +144,8 @@ const solve = (switchState) => {
   // TRIGGER MCTS
   let result = mcts(initialState, iterations, maxDepth);
 
-  console.log("Solution sequence:", result);
-  console.log("-----------------");
+  // console.log("Solution sequence:", result);
+  // console.log("-----------------");
   return result;
 };
 
