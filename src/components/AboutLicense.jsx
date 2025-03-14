@@ -42,7 +42,7 @@ const AboutLicense = () => {
           </p>
           <br />
           2. Grant of Copyright License. <br />
-          <p>{"// Ok, let's make something cool 🚀HERE🚀"}</p>
+          <p>{"// Ok, let's make something cool HERE"}</p>
           <div className="game-container">
             <SwitchGame />
           </div>

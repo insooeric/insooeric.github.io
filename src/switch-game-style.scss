@@ -1,11 +1,47 @@
+:root {
+  --primary-light: #e4ebf5;
+  --primary-dark: #555555;
+  --top-left-shadow: #c8d0e7;
+  --bottom-right-shadow: #ffffff;
+
+  --github-theme: #ffffff;
+  --github-text: #000000;
+  --github-divider: rgb(242, 242, 242);
+  --github-codeblock: #f6f8fa;
+
+  --background-color: var(--primary-light);
+  --text-color: #000000;
+}
+
+body.dark-theme {
+  --primary-light: #555555;
+  --primary-dark: #e4ebf5;
+  --top-left-shadow: #00000033;
+  --bottom-right-shadow: #ffffff1a;
+
+  --github-theme: #0d1117;
+  --github-text: #ffffff;
+  --github-divider: #555555;
+  --github-codeblock: #151b23;
+
+  --background-color: var(--primary-light);
+  --text-color: #ffffff;
+}
+
 .game-canvas {
-  border: 2px red solid;
+  //border: 2px red solid;
 
   .container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     .toggle {
       background-color: lightblue;
       width: 56px;
       height: 56px;
+      aspect-ratio: 1/1;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -49,6 +85,39 @@
     .input:checked ~ .icon--sun {
       transition-delay: 200ms;
       transform: scale(1) rotate(360deg);
+    }
+  }
+
+  .btn-pannel {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .mix-btn {
+      // --bg: var(--primary-light);
+      // --hover-bg: #ff90e8;
+      // --hover-text: #000;
+      color: var(--primary-light);
+      cursor: pointer;
+      border: 1px solid var(--primary-light);
+      border-radius: 4px;
+      padding: 0.8em 2em;
+      background: var(--primary-dark);
+      transition: 0.2s;
+
+      &:hover {
+        color: var(--primary-dark);
+        transform: translate(-0.25rem, -0.25rem);
+        border: 1px solid var(--primary-dark);
+        background: var(--primary-light);
+        box-shadow: 0.25rem 0.25rem var(--primary-dark);
+      }
+      &:active {
+        transform: translate(0);
+        box-shadow: none;
+      }
     }
   }
 }
