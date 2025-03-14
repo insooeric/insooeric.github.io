@@ -9,13 +9,10 @@ const isGoalState = (state) => {
 
 const applyMove = (state, move) => {
   let newState = cloneState(state);
-
   newState.set(move, !newState.get(move));
-
   if (newState.has(move - 1)) {
     newState.set(move - 1, !newState.get(move - 1));
   }
-
   if (newState.has(move + 1)) {
     newState.set(move + 1, !newState.get(move + 1));
   }
@@ -67,7 +64,7 @@ const rollout = (state, maxDepth) => {
   let currentState = cloneState(state);
   for (let d = 0; d < maxDepth; d++) {
     if (isGoalState(currentState)) {
-      return 1; // win
+      return 1;
     }
     const moves = getPossibleMoves(currentState);
     const move = randomElement(moves);
@@ -84,7 +81,6 @@ const mcts = (rootState, iterations = 10000, maxDepth = 10) => {
     let node = root;
     let state = cloneState(rootState);
 
-    // SELECTION
     while (node.untriedMoves.length === 0 && node.children.length > 0) {
       node = bestChild(node, Math.sqrt(2));
       state = node.state;
@@ -93,7 +89,6 @@ const mcts = (rootState, iterations = 10000, maxDepth = 10) => {
     // EXPANSION
     if (node.untriedMoves.length > 0) {
       const move = randomElement(node.untriedMoves);
-
       node.untriedMoves.splice(node.untriedMoves.indexOf(move), 1);
       const newState = applyMove(state, move);
       const child = new Node(newState, move, node);
@@ -102,7 +97,7 @@ const mcts = (rootState, iterations = 10000, maxDepth = 10) => {
       state = newState;
     }
 
-    // if we found goal
+    // WE FOUND A SOLUTION?
     if (isGoalState(state)) {
       solution = getSequence(node);
       break;
@@ -119,10 +114,11 @@ const mcts = (rootState, iterations = 10000, maxDepth = 10) => {
     }
   }
 
-  // if solution found?
+  // NO SOLUTION...? <= this shouldn't happen
   if (solution) {
     return solution;
   } else {
+    // YES SOLUTION
     const bestChildNode = root.children.reduce((a, b) =>
       a.visits > b.visits ? a : b
     );
@@ -141,9 +137,11 @@ const solve = (switchState) => {
   });
   console.log("Initial state:", initialState);
 
+  // limitations
   const iterations = 10000;
   const maxDepth = 10;
 
+  // TRIGGER MCTS
   let result = mcts(initialState, iterations, maxDepth);
 
   console.log("Solution sequence:", result);

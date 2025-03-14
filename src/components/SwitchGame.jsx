@@ -44,13 +44,13 @@ const SwitchGame = () => {
   //   console.log(switchState);
   // }, [switchState]);
 
-  const handleToggle = (switchName, newValue) => {
-    setSwitchState((prevState) =>
-      prevState.map((item) =>
-        item.switchName === switchName ? { ...item, isOn: newValue } : item
-      )
-    );
-  };
+  // const handleToggle = (switchName, newValue) => {
+  //   setSwitchState((prevState) =>
+  //     prevState.map((item) =>
+  //       item.switchName === switchName ? { ...item, isOn: newValue } : item
+  //     )
+  //   );
+  // };
 
   const handleMix = () => {
     setGameState("mixing");
@@ -73,85 +73,108 @@ const SwitchGame = () => {
   const handleSolve = () => {
     console.log("solve checkpoint");
     let sequence = solve(switchState);
-    let delayGap = 0;
-    sequence.forEach((switchName) => {
-      delayGap++;
+    // let delayGap = 0;
+    // sequence.forEach((switchName) => {
+    //   delayGap++;
+    //   setTimeout(() => {
+    //     gameLogic(switchName);
+    //   }, delayGap * 800);
+    // });
+    for (let i = 0; i < sequence.length; i++) {
       setTimeout(() => {
-        gameLogic(switchName);
-      }, delayGap * 600);
-    });
-    console.log(sequence);
+        const selectedSwitch = sequence[i];
+        console.log(selectedSwitch);
+        gameLogic(selectedSwitch);
+      }, i * 600);
+    }
+    //console.log(sequence);
   };
 
   const gameLogic = (switchName) => {
-    const switchIndex = parseInt(switchName.replace("switch", ""));
+    //const switchIndex = parseInt(switchName.replace("switch", ""));
     // console.log(`You clicked switch ${switchIndex}`);
-    switch (switchIndex) {
-      case 0:
+    switch (switchName) {
+      case "switch0":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch1" ? { ...item, isOn: !item.isOn } : item
-          )
-        );
-        break;
-      case 1:
-        setSwitchState((prevState) =>
-          prevState.map((item) =>
-            item.switchName === "switch0" || item.switchName === "switch2"
+            item.switchName === "switch1" || item.switchName === "switch0"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 2:
+      case "switch1":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch1" || item.switchName === "switch3"
+            item.switchName === "switch0" ||
+            item.switchName === "switch1" ||
+            item.switchName === "switch2"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 3:
+      case "switch2":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch2" || item.switchName === "switch4"
+            item.switchName === "switch1" ||
+            item.switchName === "switch2" ||
+            item.switchName === "switch3"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 4:
+      case "switch3":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch3" || item.switchName === "switch5"
+            item.switchName === "switch2" ||
+            item.switchName === "switch3" ||
+            item.switchName === "switch4"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 5:
+      case "switch4":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch4" || item.switchName === "switch6"
+            item.switchName === "switch3" ||
+            item.switchName === "switch4" ||
+            item.switchName === "switch5"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 6:
+      case "switch5":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch5" || item.switchName === "switch7"
+            item.switchName === "switch4" ||
+            item.switchName === "switch5" ||
+            item.switchName === "switch6"
               ? { ...item, isOn: !item.isOn }
               : item
           )
         );
         break;
-      case 7:
+      case "switch6":
         setSwitchState((prevState) =>
           prevState.map((item) =>
-            item.switchName === "switch6" ? { ...item, isOn: !item.isOn } : item
+            item.switchName === "switch5" ||
+            item.switchName === "switch6" ||
+            item.switchName === "switch7"
+              ? { ...item, isOn: !item.isOn }
+              : item
+          )
+        );
+        break;
+      case "switch7":
+        setSwitchState((prevState) =>
+          prevState.map((item) =>
+            item.switchName === "switch6" || item.switchName === "switch7"
+              ? { ...item, isOn: !item.isOn }
+              : item
           )
         );
         break;
@@ -193,8 +216,8 @@ const SwitchGame = () => {
                 disabled={gameState === "mixing" || gameState === "solving"}
                 type="checkbox"
                 checked={switchItem.isOn}
-                onChange={(e) => {
-                  handleToggle(switchItem.switchName, e.target.checked);
+                onChange={() => {
+                  // handleToggle(switchItem.switchName, e.target.checked);
                   gameLogic(switchItem.switchName);
                 }}
               />
@@ -224,7 +247,7 @@ const SwitchGame = () => {
             }}
           >
             {(() => {
-              console.log(gameState);
+              //console.log(gameState);
               switch (gameState) {
                 case "solved":
                   return "Mix it";
