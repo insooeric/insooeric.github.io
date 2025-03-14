@@ -4,6 +4,7 @@ import switch_off_icon from "../img/switch-game/switch_off_icon.svg";
 import "../switch-game-style.scss";
 import solve from "./switch-game-mcts";
 
+// dummy comment
 const SwitchGame = () => {
   const [switchState, setSwitchState] = useState([]);
   // solved, mixing, mixed, solving
