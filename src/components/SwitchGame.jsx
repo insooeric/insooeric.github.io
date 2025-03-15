@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import switch_on_icon from "../img/switch-game/switch_on_icon.svg";
 import switch_off_icon from "../img/switch-game/switch_off_icon.svg";
@@ -188,20 +189,41 @@ const SwitchGame = () => {
         <p>
           Introducing SWITCH GAME!!
           <br />
-          {(() => {
-            switch (gameState) {
-              case "solved":
-                return 'Press "Mix it" button to mix buttons.';
-              case "mixing":
-                return "Mixing the puzzle...";
-              case "mixed":
-                return 'Click buttons to turn all lights on or click "Solve" to solve the puzzle with AI';
-              case "solving":
-                return "Solving the puzzle with AI...";
-              default:
-                return "";
-            }
-          })()}
+          Each time you toggle one of buttons, it will invert left, right, and
+          itself. <br />
+          Once mixed, clicking "Solve" button will solve the puzzle using AI
+          algorithm called Monte Carlo Tree Search. [
+          <a
+            href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search"
+            target="_blank"
+          >
+            Learn More
+          </a>
+          ]
+          <br />
+          Try turning on all the lights!
+          <br />
+          <div className="game-state">
+            {(() => {
+              switch (gameState) {
+                case "solved":
+                  return 'Press "Mix it" button to mix buttons.';
+                case "mixing":
+                  return "Mixing the puzzle...";
+                case "mixed":
+                  return (
+                    <>
+                      Click buttons to turn all lights on <br />
+                      or click "Solve" to solve the puzzle with AI
+                    </>
+                  );
+                case "solving":
+                  return "Solving the puzzle with AI...";
+                default:
+                  return "";
+              }
+            })()}
+          </div>
         </p>
 
         <div className="container">

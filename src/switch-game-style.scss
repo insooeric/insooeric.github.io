@@ -31,12 +31,33 @@ body.dark-theme {
 .game-canvas {
   //border: 2px red solid;
 
+  p {
+    margin: 0;
+  }
+  .game-state {
+    width: fit-content;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+  }
+
   .container {
     position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-dark);
+
     .toggle {
       background-color: lightblue;
       width: 56px;

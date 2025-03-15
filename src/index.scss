@@ -955,8 +955,20 @@ body {
         indigo,
         violet
       );
+
+      background-size: 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: grad-animation 5s linear infinite;
+    }
+
+    @keyframes grad-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: -200% 50%;
+      }
     }
 
     .hidden-wrapper {

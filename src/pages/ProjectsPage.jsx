@@ -37,11 +37,8 @@ const ProjectsPage = () => {
       case "webarcade":
         window.open("https://github.com/insooeric/WebArcade#readme", "_blank");
         break;
-      case "badgehub":
-        window.open(
-          "https://github.com/insooeric/GithubBadge#readme",
-          "_blank"
-        );
+      case "stemma":
+        window.open("https://github.com/insooeric/Stemma#readme", "_blank");
         break;
       case "cacatua":
         window.open(
@@ -101,14 +98,14 @@ const ProjectsPage = () => {
               </div>
             </div>
             <div className="box box-2w box-2h box-badgehub">
-              <div className="project-title">Badge Hub</div>
+              <div className="project-title">Stemma</div>
 
               <div
                 className="project-preview"
-                onClick={() => handleDefaultClick("badgehub")}
+                onClick={() => handleDefaultClick("stemma")}
                 style={{ cursor: "pointer" }}
               >
-                <img src={stemma_pic} alt="BadgeHub" />
+                <img src={stemma_pic} alt="Stemma" />
               </div>
               <div className="tech-stack">
                 <img src={typescript_icon} alt="MongoDB" />
