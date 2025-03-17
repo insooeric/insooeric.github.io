@@ -276,15 +276,17 @@ body {
               opacity: 0;
               pointer-events: none;
               transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-              background: var(--background);
+              background: var(--primary-dark);
               z-index: -1;
               border-radius: 8px;
               scale: 0;
               transform-origin: 0 0;
               text-transform: capitalize;
-              font-weight: lighter;
+              font-weight: bold;
               font-size: 16px;
+              font-family: "Courier New", Courier, monospace;
               box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+              color: var(--primary-light);
             }
 
             .tooltip::before {
@@ -292,10 +294,10 @@ body {
               content: "";
               height: 0.6em;
               width: 0.6em;
-              top: 0.8em;
+              top: 0.6em;
               left: 100%;
               transform: translate(-50%) rotate(45deg);
-              background: var(--background);
+              background: var(--primary-dark);
             }
 
             .tooltip-container:hover .tooltip {
@@ -348,20 +350,6 @@ body {
               }
             }
           }
-
-          // svg {
-          //   transition: transform 0.3s ease;
-          //   transform: scale(1.2);
-          // }
-
-          // &:hover {
-          //   svg {
-          //     transform: scale(1.5);
-          //   }
-          // }
-          // &:active {
-          //   box-shadow: $inner-shadow;
-          // }
         }
       }
 
