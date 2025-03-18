@@ -31,7 +31,7 @@ import onrender_icon from "../img/onrender_icon.png";
 import github from "../img/github.png";
 // import java_icon from "../img/java_icon.png";
 
-const ProjectsPage = () => {
+const deprecate_ProjectsPage = () => {
   const handleDefaultClick = (val) => {
     switch (val) {
       case "webarcade":
@@ -75,7 +75,7 @@ const ProjectsPage = () => {
   };
   return (
     <>
-      <div className="project-page">
+      <div className="deprecate_project-page">
         <div className="content">
           <div className="project-grid">
             <div className="box box-2w box-2h box-webarcade">
@@ -252,4 +252,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default deprecate_ProjectsPage;

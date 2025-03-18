@@ -34,13 +34,13 @@
     }
   }
 
-  .project-page .content .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
-    .box {
-      min-height: 250px;
-    }
-  }
+  // .project-page .content .project-grid {
+  //   grid-template-columns: repeat(2, 1fr);
+  //   grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+  //   .box {
+  //     min-height: 250px;
+  //   }
+  // }
 }
 
 @media (max-width: 768px) {
@@ -60,48 +60,48 @@
     }
   }
 
-  .project-page .content .project-grid {
-    grid-template-columns: 1fr;
-    .box {
-      min-height: 220px;
-      &.box-webarcade {
-        order: 1;
-      }
-      &.box-badgehub {
-        order: 2;
-      }
-      &.box-profile {
-        order: 3;
-      }
-      &.box-gomoku-ai {
-        order: 4;
-      }
-      &.box-cacatua {
-        order: 5;
-      }
-      &.box-dating-app {
-        order: 6;
-      }
-      &.box-tts {
-        order: 7;
-      }
-      &.box-voice-record {
-        order: 8;
-      }
-      &.box-grid-shot {
-        order: 9;
-      }
-      &.box-fruit-ninja {
-        order: 10;
-      }
-    }
-    .box-2w {
-      grid-column: auto;
-    }
-    .box-2h {
-      grid-row: auto;
-    }
-  }
+  // .project-page .content .project-grid {
+  //   grid-template-columns: 1fr;
+  //   .box {
+  //     min-height: 220px;
+  //     &.box-webarcade {
+  //       order: 1;
+  //     }
+  //     &.box-badgehub {
+  //       order: 2;
+  //     }
+  //     &.box-profile {
+  //       order: 3;
+  //     }
+  //     &.box-gomoku-ai {
+  //       order: 4;
+  //     }
+  //     &.box-cacatua {
+  //       order: 5;
+  //     }
+  //     &.box-dating-app {
+  //       order: 6;
+  //     }
+  //     &.box-tts {
+  //       order: 7;
+  //     }
+  //     &.box-voice-record {
+  //       order: 8;
+  //     }
+  //     &.box-grid-shot {
+  //       order: 9;
+  //     }
+  //     &.box-fruit-ninja {
+  //       order: 10;
+  //     }
+  //   }
+  //   .box-2w {
+  //     grid-column: auto;
+  //   }
+  //   .box-2h {
+  //     grid-row: auto;
+  //   }
+  // }
 }
 
 @media (max-width: 600px) {
@@ -154,7 +154,7 @@
   }
 
   .about-page,
-  .project-page,
+  // .project-page,
   .not-found-page,
   .playground-page {
     padding: 40px 24px 20px;
@@ -179,7 +179,7 @@
   }
 
   .about-page,
-  .project-page,
+  // .project-page,
   .not-found-page,
   .playground-page {
     padding: 40px 16px 20px;
