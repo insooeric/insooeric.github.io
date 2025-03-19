@@ -2,6 +2,13 @@ import stemma_logo_pic from "../img/project/stemma_logo_pic.svg";
 import stemma_pic from "../img/stemma_pic.png";
 import gamepad_icon from "../img/project/gamepad_icon.svg";
 import webarcade_pic from "../img/webarcade_pic.png";
+import wack_food_pic from "../img/wack_food_pic.png";
+import fruit_ninja_pic from "../img/fruit_ninja_pic.png";
+import flip_icon from "../img/project/flip_icon.svg";
+import gomoku_pic from "../img/gomoku_pic.png";
+import cacatua_pic from "../img/cacatua_pic.png";
+
+// import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
 
 const ProjectPage = () => {
   return (
@@ -125,8 +132,13 @@ const ProjectPage = () => {
             <div className="skills-stack">
               <img
                 className="skill-icon"
-                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=javascript,mongodb,expressjs,react,nodejs,render"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=javascript,mongodb,expressjs,react"
                 alt="TechStack1"
+              />
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=nodejs,render"
+                alt="TechStack2"
               />
             </div>
             <div className="description">
@@ -140,35 +152,140 @@ const ProjectPage = () => {
           </div>
         </div>
         <div className="box project-wackafood box-1w box-1h">
-          <div className="uno-card">
-            <div className="card-inner">
-              <div className="front">
-                <div className="front-bg"></div>
-                <div className="front-content">asdf</div>
-              </div>
-              <div className="back">
-                <div className="back-bg"></div>
+          <div className="card">
+            <div className="front">
+              <img className="preview" src={wack_food_pic} alt="card bg" />
+              <span>Wack A Food</span>
+              <img className="flip-icon" src={flip_icon} alt="flip icon" />
+            </div>
+            <div className="card__content">
+              <p className="card__title">Wack A Food</p>
+              <p className="card__description">
+                A simple game made with Unity where user clicks valid object to
+                gain points within timelimit.
+              </p>
+
+              <img className="flip-icon" src={flip_icon} alt="flip icon" />
+            </div>
+          </div>
+          <div className="skills-stack">
+            <img
+              className="skill-icon"
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=unity,cs"
+              alt="TechStack1"
+            />
+          </div>
+        </div>
+
+        <div className="box project-gomoku box-2w box-2h">
+          <div className="card">
+            <div className="card2">
+              <div className="inner-content">
+                <img src={gomoku_pic} alt="gomoku ai preview" />
               </div>
             </div>
           </div>
+
+          <div className="details">
+            <div className="skills-stack">
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=cs,javascript,react,dotnet"
+                alt="TechStack1"
+              />
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=docker,render,github"
+                alt="TechStack2"
+              />
+            </div>
+            <div className="description">
+              <p>
+                An advanced artificial intelligence for Gomoku game (connect 5
+                to win).
+                <br />
+                Implemented Minimax with Heuristic and Alpha-Beta pruning, and
+                Monte Carlo Tree Search with priority hierarchy for evaluation.
+                <br />
+                It uses also supports FreeStyle and Renju rules.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="box project-gomoku box-2w box-2h">Gomoku</div>
+
         <div className="box project-fruitninja box-1w box-1h">
-          <div className="uno-card">
-            <div className="card-inner">
-              <div className="front">
-                <div className="front-bg"></div>
+          <div className="card">
+            <div className="front">
+              <img className="preview" src={fruit_ninja_pic} alt="card bg" />
+              <span>Fruit Ninja</span>
+              <img className="flip-icon" src={flip_icon} alt="flip icon" />
+            </div>
+            <div className="card__content">
+              <p className="card__title">Fruit Ninja</p>
+              <p className="card__description">
+                A simple game made with Unity where user slash fruits to gain
+                points within timelimit.
+              </p>
+
+              <img className="flip-icon" src={flip_icon} alt="flip icon" />
+            </div>
+          </div>
+          <div className="skills-stack">
+            <img
+              className="skill-icon"
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=unity,cs"
+              alt="TechStack1"
+            />
+          </div>
+        </div>
+        <div className="box project-cacatua box-2w box-2h">
+          <div className="glow-card">
+            <div className="content">
+              <img
+                className="cacatua-preview"
+                src={cacatua_pic}
+                alt="cacatua preview"
+              />
+            </div>
+          </div>
+          <div className="details">
+            <div className="skills-stack">
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=electron,dotnet,firebase"
+                alt="TechStack1"
+              />
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=typescript,cs"
+                alt="TechStack2"
+              />
+            </div>
+            <div className="description">
+              <p>
+                Team project, unifying socialization and project management.
+              </p>
+              <p>Contributers:</p>
+              <div className="contributer-container">
+                <a href="https://github.com/insooeric" target="_blank">
+                  @insooeric
+                </a>
+                <a href="https://github.com/brendokht" target="_blank">
+                  @brendokht
+                </a>
               </div>
-              <div className="back">
-                <div className="back-bg">
-                  <p className="uno">UNO</p>
-                </div>
+              <div className="contributer-container">
+                <a href="https://github.com/Llevere" target="_blank">
+                  @Llevere
+                </a>
+                <a href="https://github.com/Garenium" target="_blank">
+                  @Garenium
+                </a>
               </div>
             </div>
           </div>
         </div>
-        <div className="box project-cacatua box-2w box-1h">Cacatua</div>
-        <div className="box project-tts box-2w box-1h">Text To Speech</div>
+        <div className="box project-tts box-2w box-2h">Text To Speech</div>
       </div>
     </div>
   );
