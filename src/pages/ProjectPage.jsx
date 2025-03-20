@@ -7,6 +7,7 @@ import fruit_ninja_pic from "../img/fruit_ninja_pic.png";
 import flip_icon from "../img/project/flip_icon.svg";
 import gomoku_pic from "../img/gomoku_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
+import tts_pic from "../img/tts_pic.png";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
 
@@ -238,16 +239,20 @@ const ProjectPage = () => {
             />
           </div>
         </div>
-        <div className="box project-cacatua box-2w box-2h">
-          <div className="glow-card">
-            <div className="content">
-              <img
-                className="cacatua-preview"
-                src={cacatua_pic}
-                alt="cacatua preview"
-              />
+        <div className="box project-cacatua box-2w box-1h">
+          <div className="preview-container">
+            <div className="title">Cacatua</div>
+            <div className="glow-card">
+              <div className="content">
+                <img
+                  className="cacatua-preview"
+                  src={cacatua_pic}
+                  alt="cacatua preview"
+                />
+              </div>
             </div>
           </div>
+
           <div className="details">
             <div className="skills-stack">
               <img
@@ -285,7 +290,32 @@ const ProjectPage = () => {
             </div>
           </div>
         </div>
-        <div className="box project-tts box-2w box-2h">Text To Speech</div>
+        <div className="box project-tts box-2w box-1h">
+          <div className="container">
+            <div className="card">
+              <div className="front">
+                <img src={tts_pic} alt="tts preview" />
+                <p className="title">Text To Speech</p>
+              </div>
+              <div className="back">
+                <p className="title-in">Text To Speech</p>
+                <div className="skills-stack">
+                  <img
+                    className="skill-icon"
+                    src="https://stemma.onrender.com/api/badge?user=insooeric&badge=cs,javascript,react,dotnet"
+                    alt="TechStack1"
+                  />
+                  <img
+                    className="skill-icon"
+                    src="https://stemma.onrender.com/api/badge?user=insooeric&badge=docker,render,github"
+                    alt="TechStack2"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="card-border"></div>
+          </div>
+        </div>
       </div>
     </div>
   );

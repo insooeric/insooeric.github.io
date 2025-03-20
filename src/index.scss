@@ -1454,14 +1454,14 @@ body {
         }
 
         .card2 {
-          width: 98%;
-          height: 98%;
+          width: 99%;
+          height: 99%;
           //background-color: var(--primary-light);
           border-radius: 0.5rem;
           transition: all 0.2s;
 
           &:hover {
-            transform: scaleX(0.97) scaleY(0.95);
+            transform: scaleX(0.99) scaleY(0.99);
             border-radius: 0.8rem;
           }
 
@@ -1627,60 +1627,74 @@ body {
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
 
-      .glow-card {
-        position: relative;
-        width: fit-content;
-        height: fit-content;
-        //background: var(--primary-light);
+      .preview-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        user-select: none;
-        animation: gradient-shift 5s ease-in-out infinite;
-        // border: 2px blue solid;
-        margin: auto;
-        box-sizing: border-box;
 
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(
-              circle at 0 0,
-              hsl(27deg 93% 60%),
-              transparent
-            ),
-            radial-gradient(circle at 100% 0, #00a6ff, transparent),
-            radial-gradient(circle at 0 100%, #ff0056, transparent),
-            radial-gradient(circle at 100% 100%, #6500ff, transparent);
+        width: 100%;
+        height: 100%;
 
-          border-radius: 1rem;
+        .title {
+          font-weight: bold;
+          font-size: 1.5rem;
         }
-
-        &::after {
-          z-index: -1;
-        }
-
-        &::before {
-          z-index: -2;
-          filter: blur(2vmin);
-          animation: blur-animation 2s ease-in-out alternate infinite; // Faster blur animation
-        }
-
-        .content {
+        .glow-card {
+          position: relative;
+          width: fit-content;
+          height: fit-content;
+          //background: var(--primary-light);
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 100%;
-          height: 100%;
-          // border: 2px red solid;
-          .cacatua-preview {
+          user-select: none;
+          animation: gradient-shift 5s ease-in-out infinite;
+          // border: 2px blue solid;
+          margin: auto;
+          box-sizing: border-box;
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 0.9rem;
+            height: 100%;
+            background: radial-gradient(
+                circle at 0 0,
+                hsl(27deg 93% 60%),
+                transparent
+              ),
+              radial-gradient(circle at 100% 0, #00a6ff, transparent),
+              radial-gradient(circle at 0 100%, #ff0056, transparent),
+              radial-gradient(circle at 100% 100%, #6500ff, transparent);
+
+            border-radius: 1rem;
+          }
+
+          &::after {
+            z-index: 2;
+          }
+
+          &::before {
+            z-index: 1;
+            filter: blur(2vmin);
+            animation: blur-animation 1s ease-in-out alternate infinite; // Faster blur animation
+          }
+
+          .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            // border: 2px red solid;
+            .cacatua-preview {
+              width: 100%;
+              border-radius: 0.9rem;
+            }
+            z-index: 3;
           }
         }
       }
@@ -1715,6 +1729,8 @@ body {
             margin-top: 0.5rem;
             justify-content: space-evenly;
 
+            font-weight: bold;
+
             a {
               text-decoration: none;
               color: var(--text-color);
@@ -1726,8 +1742,8 @@ body {
 
       @keyframes blur-animation {
         to {
-          filter: blur(3vmin);
-          transform: scale(1.2);
+          filter: blur(1.5vmin);
+          transform: scale(1.1);
         }
       }
 
@@ -1746,6 +1762,118 @@ body {
 
     .project-tts {
       order: 7;
+
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: center;
+
+      .container {
+        position: relative;
+        width: 100%;
+        height: 80%;
+        margin-left: 15px;
+        margin-top: 15px;
+
+        .card {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: #f5f5f5;
+          border-radius: 8px;
+          color: #232323;
+          border: 1px solid #232323;
+          transition: all 0.5s ease-in-out;
+          overflow: hidden;
+          box-sizing: border-box;
+
+          .front {
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            transition: opacity 0.3s ease-in;
+
+            img {
+              width: 100%;
+            }
+
+            .title {
+              position: absolute;
+              bottom: 1rem;
+              left: 0.5rem;
+              font-weight: bold;
+              font-size: 1.5rem;
+              margin: 0;
+              transition: transform 0.25s ease-out;
+            }
+          }
+
+          .back {
+            display: flex;
+            transform: translateY(200%);
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: transform 0.5s ease-in, opacity 0.3s ease-in;
+            opacity: 0;
+
+            width: 100%;
+            height: 100%;
+
+            padding: 0.5rem;
+
+            //background-color: blue;
+
+            p {
+              margin: 0;
+            }
+            .title-in {
+              font-weight: bold;
+              font-size: 1.25rem;
+            }
+
+            .skills-stack {
+              display: flex;
+              flex-direction: column;
+              gap: 0.2rem;
+              margin-top: 0.5rem;
+              img {
+                height: 2.5rem;
+              }
+            }
+          }
+
+          &:hover {
+            transform: translate(-15px, -15px);
+            border-color: #5bc0eb;
+
+            .back {
+              transform: translateY(0);
+              opacity: 1;
+            }
+
+            .front {
+              opacity: 0;
+              .title {
+                transform: translateY(220%);
+              }
+            }
+          }
+        }
+
+        .card-border {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          border: 1px dashed #232323;
+          border-radius: 8px;
+          z-index: -1;
+        }
+      }
     }
 
     .box {
