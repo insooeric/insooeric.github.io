@@ -34,13 +34,47 @@
     }
   }
 
-  // .project-page .content .project-grid {
-  //   grid-template-columns: repeat(2, 1fr);
-  //   grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
-  //   .box {
-  //     min-height: 250px;
-  //   }
-  // }
+  .project-page {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+
+      .project-stemma {
+        order: 1;
+        grid-column: span 3;
+        grid-row: span 2;
+      }
+      .project-webarcade {
+        order: 2;
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+      .project-gomoku {
+        order: 3;
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .project-tts {
+        order: 4;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .project-wackafood {
+        order: 5;
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .project-fruitninja {
+        order: 6;
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .project-cacatua {
+        order: 7;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -49,59 +83,53 @@
       .box {
         min-height: 220px;
       }
-
-      // .box-2w {
-      //   grid-column: auto;
-      // }
-
-      // .box-2h {
-      //   grid-row: auto;
-      // }
     }
   }
 
-  // .project-page .content .project-grid {
-  //   grid-template-columns: 1fr;
-  //   .box {
-  //     min-height: 220px;
-  //     &.box-webarcade {
-  //       order: 1;
-  //     }
-  //     &.box-badgehub {
-  //       order: 2;
-  //     }
-  //     &.box-profile {
-  //       order: 3;
-  //     }
-  //     &.box-gomoku-ai {
-  //       order: 4;
-  //     }
-  //     &.box-cacatua {
-  //       order: 5;
-  //     }
-  //     &.box-dating-app {
-  //       order: 6;
-  //     }
-  //     &.box-tts {
-  //       order: 7;
-  //     }
-  //     &.box-voice-record {
-  //       order: 8;
-  //     }
-  //     &.box-grid-shot {
-  //       order: 9;
-  //     }
-  //     &.box-fruit-ninja {
-  //       order: 10;
-  //     }
-  //   }
-  //   .box-2w {
-  //     grid-column: auto;
-  //   }
-  //   .box-2h {
-  //     grid-row: auto;
-  //   }
-  // }
+  .project-page {
+    .grid-container {
+      grid-template-columns: repeat(6, 1fr);
+
+      .project-stemma {
+        order: 1;
+        grid-column: span 6;
+        grid-row: span 2;
+      }
+      .project-webarcade {
+        order: 2;
+        grid-column: span 3;
+        grid-row: span 2;
+      }
+      .project-gomoku {
+        order: 3;
+        grid-column: span 3;
+        grid-row: span 2;
+      }
+      .project-tts {
+        order: 4;
+        grid-column: span 4;
+        grid-row: span 1;
+      }
+
+      .project-cacatua {
+        order: 5;
+        grid-column: span 2;
+        grid-row: span 2;
+
+        grid-template-columns: 1fr;
+      }
+      .project-wackafood {
+        order: 6;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .project-fruitninja {
+        order: 7;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+  }
 }
 
 @media (max-width: 600px) {
@@ -162,6 +190,64 @@
       grid-gap: 0.5rem;
       .box {
         min-height: 200px;
+      }
+    }
+  }
+
+  .project-page {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+
+      .project-stemma {
+        order: 1;
+        grid-column: span 2;
+        grid-row: span 2;
+
+        grid-template-columns: 1fr;
+
+        .card {
+          height: fit-content;
+        }
+        .details {
+          .description {
+            .description-span2 {
+              display: none;
+            }
+          }
+        }
+      }
+      .project-gomoku {
+        order: 2;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .project-webarcade {
+        order: 3;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .project-tts {
+        order: 4;
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .project-cacatua {
+        order: 5;
+        grid-column: span 2;
+        grid-row: span 1;
+
+        grid-template-columns: 1fr;
+      }
+      .project-wackafood {
+        order: 6;
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .project-fruitninja {
+        order: 7;
+        grid-column: span 1;
+        grid-row: span 1;
       }
     }
   }

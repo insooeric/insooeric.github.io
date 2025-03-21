@@ -8,16 +8,28 @@ import flip_icon from "../img/project/flip_icon.svg";
 import gomoku_pic from "../img/gomoku_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import tts_pic from "../img/tts_pic.png";
+import GithubIcon from "../svgs/GithubIcon";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
 
 const ProjectPage = () => {
   return (
     <div className="project-page">
-      ProjectPage
-      <div>dump something here</div>
       <div className="grid-container">
-        <div className="box project-stemma box-4w box-2h">
+        <div className="box project-stemma">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/Stemma#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
           <div className="card">
             <div className="nav-pannel">
               <div className="circles">
@@ -60,9 +72,12 @@ const ProjectPage = () => {
                 <div className="search-bar">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="7.89"
-                    height="7.887"
+                    width="12"
+                    height="12"
                     viewBox="0 0 16.89 16.887"
+                    onClick={() => {
+                      window.open("https://stemma.vercel.app/", "_blank");
+                    }}
                   >
                     <path
                       id="Fill"
@@ -110,7 +125,20 @@ const ProjectPage = () => {
           </div>
         </div>
 
-        <div className="box project-webarcade box-1w box-2h">
+        <div className="box project-webarcade">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/WebArcade#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
           <div className="card work">
             <div className="img-section">
               <img src={gamepad_icon} alt="gamepad" />
@@ -152,7 +180,20 @@ const ProjectPage = () => {
             </div>
           </div>
         </div>
-        <div className="box project-wackafood box-1w box-1h">
+        <div className="box project-wackafood">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/WackAFood#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
           <div className="card">
             <div className="front">
               <img className="preview" src={wack_food_pic} alt="card bg" />
@@ -178,7 +219,19 @@ const ProjectPage = () => {
           </div>
         </div>
 
-        <div className="box project-gomoku box-2w box-2h">
+        <div className="box project-gomoku">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/Gomoku-AI#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
           <div className="card">
             <div className="card2">
               <div className="inner-content">
@@ -214,7 +267,20 @@ const ProjectPage = () => {
           </div>
         </div>
 
-        <div className="box project-fruitninja box-1w box-1h">
+        <div className="box project-fruitninja">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/FruitNinja_Mock_Game#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
           <div className="card">
             <div className="front">
               <img className="preview" src={fruit_ninja_pic} alt="card bg" />
@@ -239,7 +305,20 @@ const ProjectPage = () => {
             />
           </div>
         </div>
-        <div className="box project-cacatua box-2w box-1h">
+        <div className="box project-cacatua">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/Cacatua#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
           <div className="preview-container">
             <div className="title">Cacatua</div>
             <div className="glow-card">
@@ -287,10 +366,25 @@ const ProjectPage = () => {
                   @Garenium
                 </a>
               </div>
+              <br />
+              <br />
             </div>
           </div>
         </div>
-        <div className="box project-tts box-2w box-1h">
+
+        <div className="box project-tts">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/TextToSpeech#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
           <div className="container">
             <div className="card">
               <div className="front">
@@ -299,17 +393,21 @@ const ProjectPage = () => {
               </div>
               <div className="back">
                 <p className="title-in">Text To Speech</p>
-                <div className="skills-stack">
-                  <img
-                    className="skill-icon"
-                    src="https://stemma.onrender.com/api/badge?user=insooeric&badge=cs,javascript,react,dotnet"
-                    alt="TechStack1"
-                  />
-                  <img
-                    className="skill-icon"
-                    src="https://stemma.onrender.com/api/badge?user=insooeric&badge=docker,render,github"
-                    alt="TechStack2"
-                  />
+                <div className="grid-container">
+                  <div className="description">
+                    <p>A text to speech application using Open AI.</p>
+                    <p>
+                      It uses speech to text as well, analyizing inputs to show
+                      detailed overall statistics.
+                    </p>
+                  </div>
+                  <div className="skills-stack">
+                    <img
+                      className="skill-icon"
+                      src="https://stemma.onrender.com/api/badge?user=insooeric&row=3&badge=cs,javascript,react,dotnet,docker,render,github,chatgpt,firebase"
+                      alt="TechStack1"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
