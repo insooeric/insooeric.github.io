@@ -117,6 +117,16 @@
         grid-row: span 2;
 
         grid-template-columns: 1fr;
+
+        .preview-container {
+          .title {
+            margin-bottom: 1rem;
+          }
+
+          .glow-card {
+            margin: 0 1rem;
+          }
+        }
       }
       .project-wackafood {
         order: 6;
@@ -238,6 +248,16 @@
         grid-row: span 1;
 
         grid-template-columns: 1fr;
+
+        .preview-container {
+          .title {
+            margin-bottom: 1rem;
+          }
+
+          .glow-card {
+            margin: 0 1rem;
+          }
+        }
       }
       .project-wackafood {
         order: 6;

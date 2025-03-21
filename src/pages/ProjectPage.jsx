@@ -70,6 +70,7 @@ const ProjectPage = () => {
                   </svg>
                 </div>
                 <div className="search-bar">
+                  <span className="search-span">Click Me!</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -110,8 +111,8 @@ const ProjectPage = () => {
             <div className="description">
               <p>
                 <img src={stemma_logo_pic} className="inline" alt="logo" /> is a
-                web application that allow users to display customized badges
-                like the one at the top.
+                web application that allow users to{" "}
+                <b>display customized badges</b> like the one at the top.
               </p>
               <br />
               <div className="description-span2">
@@ -252,13 +253,14 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                An advanced artificial intelligence for Gomoku game (connect 5
-                to win).
+                An advanced artificial intelligence for <b>Gomoku</b> game
+                (connect 5 to win).
                 <br />
-                Implemented Minimax with Heuristic and Alpha-Beta pruning, and
-                Monte Carlo Tree Search with priority hierarchy for evaluation.
+                Implemented <b>Minimax</b> with <b>Heuristic</b> and{" "}
+                <b>Alpha-Beta Pruning</b>, and <b>Monte Carlo Tree Search</b>{" "}
+                with <b>priority</b> for evaluation.
                 <br />
-                It uses also supports FreeStyle and Renju rules.
+                It uses also supports <b>FreeStyle</b> and <b>Renju</b> rules.
               </p>
             </div>
           </div>
@@ -390,10 +392,9 @@ const ProjectPage = () => {
                 <p className="title-in">Text To Speech</p>
                 <div className="grid-container">
                   <div className="description">
-                    <p>A text to speech application using Open AI.</p>
                     <p>
-                      It uses speech to text as well, analyizing inputs to show
-                      detailed overall statistics.
+                      A text to speech application using <b>Open AI: Whisper</b>
+                      , analyizing inputs to show detailed overall statistics.
                     </p>
                   </div>
                   <div className="skills-stack">

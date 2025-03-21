@@ -1220,6 +1220,12 @@ body {
               color: rgb(88, 88, 88);
               box-shadow: inset 2px 2px 2px #05050525;
 
+              .search-span {
+                position: absolute;
+                bottom: 0.2rem;
+                left: 0.2rem;
+                font-size: 0.5rem;
+              }
               svg {
                 position: absolute;
                 left: 10px;
@@ -2015,6 +2021,8 @@ body {
 
         width: 100%;
         height: 100%;
+
+        margin: 0 auto;
 
         .title {
           font-weight: bold;
