@@ -243,11 +243,12 @@
         order: 6;
         grid-column: span 1;
         grid-row: span 1;
-
-        .front {
-          img.flip-icon {
-            width: 15px;
-            height: 15px;
+        .card {
+          .front {
+            img.flip-icon {
+              width: 15px;
+              height: 15px;
+            }
           }
         }
       }
