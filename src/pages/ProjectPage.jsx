@@ -203,11 +203,8 @@ const ProjectPage = () => {
             <div className="card__content">
               <p className="card__title">Wack A Food</p>
               <p className="card__description">
-                A simple game made with Unity where user clicks valid object to
-                gain points within timelimit.
+                Unity game where user clicks valid objects within timelimit.
               </p>
-
-              <img className="flip-icon" src={flip_icon} alt="flip icon" />
             </div>
           </div>
           <div className="skills-stack">
@@ -290,11 +287,9 @@ const ProjectPage = () => {
             <div className="card__content">
               <p className="card__title">Fruit Ninja</p>
               <p className="card__description">
-                A simple game made with Unity where user slash fruits to gain
-                points within timelimit.
+                Unity game where user slash valid fruits for points within
+                timelimit.
               </p>
-
-              <img className="flip-icon" src={flip_icon} alt="flip icon" />
             </div>
           </div>
           <div className="skills-stack">
