@@ -244,6 +244,7 @@
         grid-column: span 1;
         grid-row: span 1;
         .card {
+          aspect-ratio: 1/0.8;
           .front {
             img.flip-icon {
               width: 15px;
@@ -257,10 +258,13 @@
         grid-column: span 1;
         grid-row: span 1;
 
-        .front {
-          img.flip-icon {
-            width: 15px;
-            height: 15px;
+        .card {
+          aspect-ratio: 1/0.8;
+          .front {
+            img.flip-icon {
+              width: 15px;
+              height: 15px;
+            }
           }
         }
       }
