@@ -11,7 +11,7 @@ import tts_pic from "../img/tts_pic.png";
 import GithubIcon from "../svgs/GithubIcon";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
-
+// TODO: add links for bolded ones if necessary
 const ProjectPage = () => {
   return (
     <div className="project-page">
