@@ -9,7 +9,7 @@ import gomoku_pic from "../img/gomoku_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import tts_pic from "../img/tts_pic.png";
 import GithubIcon from "../svgs/GithubIcon";
-//import info_glass_icon from "../img/project/info_glass_icon.svg";
+//import info_glass_icon from "../img/project/info_glass_icon.svg" ;
 import SearchIcon from "../svgs/SearchIcon";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
