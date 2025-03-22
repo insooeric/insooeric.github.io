@@ -1,4 +1,4 @@
-import stemma_logo_pic from "../img/project/stemma_logo_pic.svg";
+//import stemma_logo_pic from "../img/project/stemma_logo_pic.svg";
 import stemma_pic from "../img/stemma_pic.png";
 import gamepad_icon from "../img/project/gamepad_icon.svg";
 import webarcade_pic from "../img/webarcade_pic.png";
@@ -9,6 +9,8 @@ import gomoku_pic from "../img/gomoku_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import tts_pic from "../img/tts_pic.png";
 import GithubIcon from "../svgs/GithubIcon";
+//import info_glass_icon from "../img/project/info_glass_icon.svg";
+import SearchIcon from "../svgs/SearchIcon";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
 // TODO: add links for bolded ones if necessary
@@ -110,8 +112,17 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                <img src={stemma_logo_pic} className="inline" alt="logo" /> is a
-                web application that allow users to{" "}
+                <span
+                  className="logo-link"
+                  onClick={() => {
+                    window.open("https://stemma.vercel.app/", "_blank");
+                  }}
+                >
+                  {/* <img src={stemma_logo_pic} className="inline" alt="logo" /> */}
+                  Stemma
+                  <SearchIcon />
+                </span>{" "}
+                is a web application that allow users to{" "}
                 <b>display customized badges</b> like the one at the top.
               </p>
               <br />
@@ -173,7 +184,20 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                A fullstack web application where users can play various games.
+                A{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://www.geeksforgeeks.org/mern-stack/",
+                      "_blank"
+                    );
+                  }}
+                >
+                  MERN stack
+                  <SearchIcon />
+                </span>{" "}
+                web application where users can play various games.
                 <br />
                 It supports register/login to keep in track of scores,
                 displaying overall analysis.
@@ -204,7 +228,19 @@ const ProjectPage = () => {
             <div className="card__content">
               <p className="card__title">Wack A Food</p>
               <p className="card__description">
-                Unity game where user clicks valid objects within timelimit.
+                <span
+                  className="bold-link flip-color"
+                  onClick={() => {
+                    window.open(
+                      "http://en.wikipedia.org/wiki/Unity_(game_engine)",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Unity
+                  <SearchIcon />
+                </span>{" "}
+                game where user clicks valid objects within timelimit.
               </p>
             </div>
           </div>
@@ -253,14 +289,109 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                An advanced artificial intelligence for <b>Gomoku</b> game
-                (connect 5 to win).
+                An advanced artificial intelligence for{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open("https://wikipedia.org/wiki/Gomoku", "_blank");
+                  }}
+                >
+                  Gomoku
+                  <SearchIcon />
+                </span>{" "}
+                game (connect 5 to win).
                 <br />
-                Implemented <b>Minimax</b> with <b>Heuristic</b> and{" "}
-                <b>Alpha-Beta Pruning</b>, and <b>Monte Carlo Tree Search</b>{" "}
-                with <b>priority</b> for evaluation.
+                Implemented{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open("https://wikipedia.org/wiki/Minimax", "_blank");
+                  }}
+                >
+                  Minimax
+                  <SearchIcon />
+                </span>{" "}
+                with{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/Heuristic_evaluation",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Heuristic
+                  <SearchIcon />
+                </span>{" "}
+                and{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/Alpha%E2%80%93beta_pruning",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Alpha-Beta Pruning
+                  <SearchIcon />
+                </span>
+                , and{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/Monte_Carlo_tree_search",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Monte Carlo Tree Search
+                  <SearchIcon />
+                </span>{" "}
+                with{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://github.com/insooeric/Gomoku-AI/blob/master/Gomoku_AI/AIModels/MCTS/Prioritizer.cs",
+                      "_blank"
+                    );
+                  }}
+                >
+                  priority
+                  <SearchIcon />
+                </span>{" "}
+                for evaluation.
                 <br />
-                It uses also supports <b>FreeStyle</b> and <b>Renju</b> rules.
+                It uses also supports{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/Gomoku#Freestyle_gomoku",
+                      "_blank"
+                    );
+                  }}
+                >
+                  FreeStyle
+                  <SearchIcon />
+                </span>{" "}
+                and{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/Gomoku#Renju",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Renju
+                  <SearchIcon />
+                </span>{" "}
+                rules.
               </p>
             </div>
           </div>
@@ -289,8 +420,19 @@ const ProjectPage = () => {
             <div className="card__content">
               <p className="card__title">Fruit Ninja</p>
               <p className="card__description">
-                Unity game where user slash valid fruits for points within
-                timelimit.
+                <span
+                  className="bold-link flip-color"
+                  onClick={() => {
+                    window.open(
+                      "http://en.wikipedia.org/wiki/Unity_(game_engine)",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Unity
+                  <SearchIcon />
+                </span>{" "}
+                game where user slash valid fruits for points within timelimit.
               </p>
             </div>
           </div>
@@ -344,7 +486,30 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                Team project, unifying socialization and project management.
+                Team project using{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open("https://www.electronforge.io/", "_blank");
+                  }}
+                >
+                  Electron Forge
+                  <SearchIcon />
+                </span>{" "}
+                and{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://wikipedia.org/wiki/ASP.NET_Core",
+                      "_blank"
+                    );
+                  }}
+                >
+                  ASP.NET Core
+                  <SearchIcon />
+                </span>
+                , unifying socialization and project management.
               </p>
               <p>Contributers:</p>
               <div className="contributer-container">
@@ -393,7 +558,19 @@ const ProjectPage = () => {
                 <div className="grid-container">
                   <div className="description">
                     <p>
-                      A text to speech application using <b>Open AI: Whisper</b>
+                      A text to speech application using{" "}
+                      <span
+                        className="bold-link black-color"
+                        onClick={() => {
+                          window.open(
+                            "https://openai.com/index/whisper/",
+                            "_blank"
+                          );
+                        }}
+                      >
+                        Open AI: Whisper
+                        <SearchIcon />
+                      </span>
                       , analyizing inputs to show detailed overall statistics.
                     </p>
                   </div>

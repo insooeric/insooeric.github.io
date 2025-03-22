@@ -1225,6 +1225,7 @@ body {
                 bottom: 0.2rem;
                 left: 0.2rem;
                 font-size: 0.5rem;
+                font-weight: bold;
               }
               svg {
                 position: absolute;
@@ -1280,9 +1281,59 @@ body {
             margin: 0;
             padding: 0;
 
-            img.inline {
-              height: 1rem;
-              vertical-align: bottom;
+            .logo-link {
+              position: relative;
+              cursor: pointer;
+              font-weight: bold;
+
+              background: linear-gradient(
+                to right,
+                #3498db,
+                #9b59b6,
+                #9b59b6,
+                #3498db
+              );
+
+              background-size: 200%;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: text-animation 2s linear infinite;
+
+              &:hover {
+                font-size: larger;
+                animation: text-animation 0.5s linear infinite;
+              }
+
+              @keyframes text-animation {
+                0% {
+                  background-position: 0% 50%;
+                }
+                100% {
+                  background-position: -200% 50%;
+                }
+              }
+
+              .search-icon {
+                // position: absolute;
+                // top: 0;
+                // right: -0.2rem;
+                width: 0.5rem;
+                height: 0.5rem;
+                vertical-align: top;
+              }
+
+              svg {
+                fill: var(--primary-dark) !important;
+
+                path {
+                  stroke: var(--primary-dark) !important;
+                }
+              }
+
+              img.inline {
+                height: 1rem;
+                vertical-align: bottom;
+              }
             }
           }
 
@@ -2357,6 +2408,51 @@ body {
       box-sizing: border-box;
       box-shadow: $inner-shadow;
       border-radius: 1rem;
+
+      .bold-link {
+        position: relative;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          font-size: larger;
+        }
+
+        .search-icon {
+          // position: absolute;
+          // top: 0;
+          // right: -0.3rem;
+          width: 0.5rem;
+          height: 0.5rem;
+          vertical-align: top;
+
+          fill: var(--primary-dark) !important;
+
+          path {
+            stroke: var(--primary-dark) !important;
+          }
+        }
+      }
+
+      .flip-color {
+        .search-icon {
+          fill: #777 !important;
+
+          path {
+            stroke: #777 !important;
+          }
+        }
+      }
+
+      .black-color {
+        .search-icon {
+          fill: black !important;
+
+          path {
+            stroke: black !important;
+          }
+        }
+      }
     }
 
     .project-stemma {
