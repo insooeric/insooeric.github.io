@@ -13,7 +13,6 @@ import GithubIcon from "../svgs/GithubIcon";
 import SearchIcon from "../svgs/SearchIcon";
 
 // import card_gradient_bg_icon from "../img/project/card_gradient_bg_icon.svg";
-// TODO: add links for bolded ones if necessary
 const ProjectPage = () => {
   return (
     <div className="project-page">
