@@ -1,10 +1,36 @@
+import { useRef } from "react";
 import SelfiPic from "../svgs/SelfiPic";
 import RightArrowIcon from "../svgs/RightArrowIcon";
 import UpArrowIcon from "../svgs/UpArrowIcon";
 import flag_southKr_icon from "../img/about/flag_southKr_icon.svg";
 import flag_canada_icon from "../img/about/flag_canada_icon.svg";
+import ExpandCollapseIcon from "../svgs/ExpandCollapseIcon";
 
 const AboutReadme = () => {
+  // const trigger = document.querySelector(".collapse-trigger");
+  // const container = document.querySelector(".collapse-container");
+  const triggerRef = useRef(null);
+  const containerRef = useRef(null);
+  const svgWrapperRef = useRef(null);
+
+  const handleMouseDown = () => {
+    if (containerRef.current) {
+      containerRef.current.classList.add("expanded");
+    }
+    if (svgWrapperRef.current) {
+      svgWrapperRef.current.classList.add("rotated");
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (containerRef.current) {
+      containerRef.current.classList.remove("expanded");
+    }
+    if (svgWrapperRef.current) {
+      svgWrapperRef.current.classList.remove("rotated");
+    }
+  };
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -122,234 +148,418 @@ const AboutReadme = () => {
       </ol>
       <h2>Skills</h2>
       <div className="divider" />
-      <div className="skills-grid">
-        <div className="cell">
-          <div className="language-name">
-            <span>C#</span>
-          </div>
-          <div className="proficiency">A+</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=cs"
-              alt="cs"
-            />
+      <div className="collapse-container" ref={containerRef}>
+        <div
+          className="collapse-trigger"
+          ref={triggerRef}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        >
+          <div className="svg-wrapper" ref={svgWrapperRef}>
+            <ExpandCollapseIcon />
           </div>
         </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>JavaScript</span>
+        <div className="skills-grid">
+          <div className="cell">
+            <div className="language-name">
+              <span>C#</span>
+            </div>
+            <div className="proficiency">A+</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=cs"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency">A+</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=javascript"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>JavaScript</span>
+            </div>
+            <div className="proficiency">A+</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=javascript"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>TypeScript</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>TypeScript</span>
+            </div>
+            <div className="proficiency">A+</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=typescript"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency">A+</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=typescript"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Python</span>
+            </div>
+            <div className="proficiency">B</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=python"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>Python</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>Java</span>
+            </div>
+            <div className="proficiency">B-</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=java"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency">B</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=python"
-              alt="cs"
-            />
-          </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>Java</span>
-          </div>
-          <div className="proficiency">B-</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=java"
-              alt="cs"
-            />
-          </div>
-        </div>
 
-        <div className="cell">
-          <div className="language-name">
-            <span>C++</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>C++</span>
+            </div>
+            <div className="proficiency">C+</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=cpp"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency">C+</div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?badge=cpp"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>C</span>
+            </div>
+            <div className="proficiency">C</div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?badge=c"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>C</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>Azure</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=azure"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency">C</div>
-          <div className="logo">
-            <img src="https://stemma.onrender.com/api/badge?badge=c" alt="cs" />
+          <div className="cell">
+            <div className="language-name">
+              <span>AWS</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=aws"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>Google Cloud</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=gcp"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Firebase</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=firebase"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>Render</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=render"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Vercel</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=vercel"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>AndroidStudio</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=androidstudio"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>Eclipse</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=eclipse"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>Visual Studio</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=visualstudio"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>VS Code</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=vscode"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          <div className="cell">
+            <div className="language-name">
+              <span>Jupyter</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=jupyter"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>ASP.NET Core</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=dotnet"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>ExpressJS</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=expressjs"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>NodeJS</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=nodejs"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>ReactJS</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=react"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>Redux</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=redux"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          <div className="cell">
+            <div className="language-name">
+              <span>VueJS</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=vuejs"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>React Native</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=reactnative"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          <div className="cell">
+            <div className="language-name">
+              <span>HTML</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=html"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Sass</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=sass"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          {/* <div className="cell">
+            <div className="language-name">
+              <span>Vite</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=vite"
+                alt="cs"
+              />
+            </div>
+          </div> */}
+          <div className="cell">
+            <div className="language-name">
+              <span>MongoDB</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=mongodb"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>MySQL</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=mysql"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
+          <div className="cell">
+            <div className="language-name">
+              <span>Git</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=git"
+                alt="cs"
+              />
+            </div>
           </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Slack</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=slack"
+                alt="cs"
+              />
+            </div>
           </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
-          </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
-          </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
-          </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
-          </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
-          </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
-          </div>
-        </div>
-        <div className="cell">
-          <div className="language-name">
-            <span>React</span>
-          </div>
-          <div className="proficiency"></div>
-          <div className="logo">
-            <img
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
-              alt="cs"
-            />
+          <div className="cell">
+            <div className="language-name">
+              <span>Unity</span>
+            </div>
+            <div className="proficiency"></div>
+            <div className="logo">
+              <img
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=unity"
+                alt="cs"
+              />
+            </div>
           </div>
         </div>
       </div>
+
       <ul>
         <li className="narrow-li">
           Design and write clean, functional code (mostly🤞)
