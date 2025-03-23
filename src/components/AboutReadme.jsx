@@ -1,6 +1,8 @@
 import SelfiPic from "../svgs/SelfiPic";
 import RightArrowIcon from "../svgs/RightArrowIcon";
 import UpArrowIcon from "../svgs/UpArrowIcon";
+import flag_southKr_icon from "../img/about/flag_southKr_icon.svg";
+import flag_canada_icon from "../img/about/flag_canada_icon.svg";
 
 const AboutReadme = () => {
   const handleScrollToTop = () => {
@@ -34,15 +36,51 @@ const AboutReadme = () => {
         catches my mind, and having conversion with others. <br />
         <span className="small-font">I like ppl😊</span>
       </p>
-      <br />
       <h2>Built With</h2>
       <div className="divider" />
       <ul>
-        <li>Some amount of Korea and Canada</li>
-        <li>Small amount of Philippines.</li>
-        <li>Mostly consists of 0s and 1s</li>
+        <li>
+          Born in South Korea{" "}
+          <img
+            className="flag"
+            src={flag_southKr_icon}
+            alt="South Korea Flag"
+          />
+        </li>
+        <li>
+          Living in Canada{" "}
+          <img className="flag" src={flag_canada_icon} alt="Canada Flag" />
+        </li>
       </ul>
-      <br />
+      <h2>Updates</h2>
+      <div className="divider" />
+      <ul>
+        <li>
+          v_2024_12
+          <ul
+            style={{
+              listStyleType: "none",
+              paddingLeft: "1rem",
+            }}
+          >
+            <li className="narrow-li">- Fanshawe College🎓</li>
+            <li className="narrow-li">- Computer Programming and Analysis</li>
+          </ul>
+        </li>
+
+        <li>
+          v_2025_5
+          <ul
+            style={{
+              listStyleType: "none",
+              paddingLeft: "1rem",
+            }}
+          >
+            <li className="narrow-li">- Western University🏫</li>
+            <li className="narrow-li">- Computer Science</li>
+          </ul>
+        </li>
+      </ul>
       <h2>Getting Started</h2>
       <div className="divider" />
       <h3>Prerequisites</h3>
@@ -82,26 +120,236 @@ const AboutReadme = () => {
         </li>
         <li>Then I started stacking up Full-Stack knowledge since College!</li>
       </ol>
-      <br />
-      <h2>Updates</h2>
+      <h2>Skills</h2>
       <div className="divider" />
-      <ul>
-        <li>
-          v_2024_12
-          <ul
-            style={{
-              listStyleType: "none",
-              paddingLeft: "1rem",
-            }}
-          >
-            <li className="narrow-li">- Fanshawe College🎓</li>
-            <li className="narrow-li">- Computer Programming and Analysis</li>
-          </ul>
-        </li>
-      </ul>
-      <br />
-      <h2>Features</h2>
-      <div className="divider" />
+      <div className="skills-grid">
+        <div className="cell">
+          <div className="language-name">
+            <span>C#</span>
+          </div>
+          <div className="proficiency">A+</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=cs"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>JavaScript</span>
+          </div>
+          <div className="proficiency">A+</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=javascript"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>TypeScript</span>
+          </div>
+          <div className="proficiency">A+</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=typescript"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>Python</span>
+          </div>
+          <div className="proficiency">B</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=python"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>Java</span>
+          </div>
+          <div className="proficiency">B-</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=java"
+              alt="cs"
+            />
+          </div>
+        </div>
+
+        <div className="cell">
+          <div className="language-name">
+            <span>C++</span>
+          </div>
+          <div className="proficiency">C+</div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?badge=cpp"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>C</span>
+          </div>
+          <div className="proficiency">C</div>
+          <div className="logo">
+            <img src="https://stemma.onrender.com/api/badge?badge=c" alt="cs" />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+        <div className="cell">
+          <div className="language-name">
+            <span>React</span>
+          </div>
+          <div className="proficiency"></div>
+          <div className="logo">
+            <img
+              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=I_LOVE_CHICKEN_WING"
+              alt="cs"
+            />
+          </div>
+        </div>
+      </div>
       <ul>
         <li className="narrow-li">
           Design and write clean, functional code (mostly🤞)
@@ -123,8 +371,7 @@ const AboutReadme = () => {
           </span>
         </li>
       </ul>
-      <br />
-      <h2>TMI</h2>
+      <h2>Note</h2>
       <div className="divider" />
       <ul>
         <li className="narrow-li">I thrive on caffeine and good challenges</li>
@@ -160,7 +407,6 @@ const AboutReadme = () => {
           </span>
         </li>
       </ul>
-      <br />
       <h2>License</h2>
       <div className="divider" />
       <p>What&apos;s in the license page...?</p>

@@ -903,6 +903,11 @@ body {
     padding: 20px;
     background-color: var(--github-theme);
 
+    .flag {
+      height: 1.5rem;
+      vertical-align: middle;
+    }
+
     .selfie-container {
       width: fit-content;
       display: flex;
@@ -1013,7 +1018,8 @@ body {
     ul,
     ol {
       li {
-        margin: 1rem auto;
+        margin: 0 auto;
+        margin-bottom: 0.2rem;
       }
     }
 
@@ -1041,6 +1047,62 @@ body {
       height: 20px;
       border: 1px white solid;
       border-radius: 0.3rem;
+    }
+
+    .skills-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      width: 100%;
+      //border: 1px red solid;
+
+      box-sizing: border-box;
+
+      .cell {
+        display: grid;
+        grid-template-columns: auto 50px 50px;
+        border: 1px var(--primary-dark) solid;
+        box-sizing: border-box;
+
+        .language-name {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          height: 100%;
+          //border: 1px red solid;
+          padding-left: 0.5rem;
+
+          box-sizing: border-box;
+
+          span {
+            // border: 1px red solid;
+            border-radius: 0.5rem;
+            background-color: rgb(184, 184, 184);
+            padding: 0.1rem 0.4rem;
+          }
+        }
+
+        .proficiency {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: var(--text-color);
+        }
+
+        .logo {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          //border: 1px red solid;
+          padding: 0.5rem;
+
+          box-sizing: border-box;
+        }
+      }
     }
 
     .terms-policies-content {
