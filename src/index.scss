@@ -1079,16 +1079,16 @@ body {
         &:before {
           content: "";
           position: absolute;
-          top: -0.9rem; /* Position the pseudo-element above the trigger */
+          top: -0.9rem;
           left: 0;
           width: 100%;
-          height: 1rem; /* Same thickness as your intended border */
+          height: 1rem;
           background: linear-gradient(
             to bottom,
             transparent,
             var(--primary-dark)
           );
-          pointer-events: none; /* So it doesn't interfere with interactions */
+          pointer-events: none;
         }
 
         .svg-wrapper {
