@@ -365,7 +365,7 @@ const AboutReadme = () => {
               />
             </div>
           </div> */}
-          <div className="cell">
+          {/* <div className="cell">
             <div className="language-name">
               <span>Jupyter</span>
             </div>
@@ -376,7 +376,7 @@ const AboutReadme = () => {
                 alt="cs"
               />
             </div>
-          </div>
+          </div> */}
           <div className="cell">
             <div className="language-name">
               <span>ASP.NET Core</span>

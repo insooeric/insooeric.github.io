@@ -39,6 +39,15 @@
       .collapse-container {
         .skills-grid {
           grid-template-columns: 1fr 1fr 1fr;
+
+          .cell {
+            &:nth-child(4n) {
+              border-right: 1px var(--primary-dark) solid;
+            }
+            &:nth-child(3n) {
+              border-right: none;
+            }
+          }
         }
       }
     }
@@ -101,6 +110,17 @@
       .collapse-container {
         .skills-grid {
           grid-template-columns: 1fr 1fr;
+          .cell {
+            &:nth-child(4n) {
+              border-right: 1px var(--primary-dark) solid;
+            }
+            &:nth-child(3n) {
+              border-right: 1px var(--primary-dark) solid;
+            }
+            &:nth-child(2n) {
+              border-right: none;
+            }
+          }
         }
       }
     }
