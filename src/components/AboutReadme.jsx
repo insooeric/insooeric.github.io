@@ -3,6 +3,7 @@ import SelfiPic from "../svgs/SelfiPic";
 import RightArrowIcon from "../svgs/RightArrowIcon";
 import UpArrowIcon from "../svgs/UpArrowIcon";
 import flag_southKr_icon from "../img/about/flag_southKr_icon.svg";
+import flag_philippines_icon from "../img/about/flag_philippines_icon.svg";
 import flag_canada_icon from "../img/about/flag_canada_icon.svg";
 import ExpandCollapseIcon from "../svgs/ExpandCollapseIcon";
 
@@ -74,6 +75,14 @@ const AboutReadme = () => {
           />
         </li>
         <li>
+          Left in Philippines{" "}
+          <img
+            className="flag"
+            src={flag_philippines_icon}
+            alt="Philippines Flag"
+          />
+        </li>
+        <li>
           Living in Canada{" "}
           <img className="flag" src={flag_canada_icon} alt="Canada Flag" />
         </li>
@@ -82,7 +91,7 @@ const AboutReadme = () => {
       <div className="divider" />
       <ul>
         <li>
-          v_2024_12
+          2021_9 ~ 2024_12
           <ul
             style={{
               listStyleType: "none",
@@ -95,7 +104,7 @@ const AboutReadme = () => {
         </li>
 
         <li>
-          v_2025_5
+          2025_5 ~ present
           <ul
             style={{
               listStyleType: "none",

@@ -2,12 +2,12 @@
 import stemma_pic from "../img/stemma_pic.png";
 import gamepad_icon from "../img/project/gamepad_icon.svg";
 import webarcade_pic from "../img/webarcade_pic.png";
-import wack_food_pic from "../img/wack_food_pic.png";
 import fruit_ninja_pic from "../img/fruit_ninja_pic.png";
 import flip_icon from "../img/project/flip_icon.svg";
 import gomoku_pic from "../img/gomoku_pic.png";
 import cacatua_pic from "../img/cacatua_pic.png";
 import tts_pic from "../img/tts_pic.png";
+import number_recognition_pic from "../img/number_recognition_pic.jpg";
 import GithubIcon from "../svgs/GithubIcon";
 //import info_glass_icon from "../img/project/info_glass_icon.svg" ;
 import SearchIcon from "../svgs/SearchIcon";
@@ -204,11 +204,11 @@ const ProjectPage = () => {
             </div>
           </div>
         </div>
-        <div className="box project-wackafood">
+        <div className="box project-numberrecognition">
           <button
             onClick={() =>
               window.open(
-                "https://github.com/insooeric/WackAFood#readme",
+                "https://github.com/insooeric/NumberRecognition#readme",
                 "_blank"
               )
             }
@@ -218,37 +218,48 @@ const ProjectPage = () => {
             </span>
           </button>
 
-          <div className="card">
-            <div className="front">
-              <img className="preview" src={wack_food_pic} alt="card bg" />
-              <span>Wack A Food</span>
-              <img className="flip-icon" src={flip_icon} alt="flip icon" />
-            </div>
-            <div className="card__content">
-              <p className="card__title">Wack A Food</p>
-              <p className="card__description">
-                <span
-                  className="bold-link flip-color"
-                  onClick={() => {
-                    window.open(
-                      "http://en.wikipedia.org/wiki/Unity_(game_engine)",
-                      "_blank"
-                    );
-                  }}
-                >
-                  Unity
-                  <SearchIcon />
-                </span>{" "}
-                game where user clicks valid objects within timelimit.
-              </p>
+          <div className="left-tab">
+            <div className="card">
+              <img src={number_recognition_pic} alt="" />
+              <div className="card__content">
+                <p className="card__title">Number Recognition</p>
+                <p className="card__description">
+                  Number Recognition application using Convolutional Neural
+                  Network (CNN) built from scratch without using TensorFlow or
+                  any other training libraries
+                </p>
+              </div>
             </div>
           </div>
-          <div className="skills-stack">
-            <img
-              className="skill-icon"
-              src="https://stemma.onrender.com/api/badge?user=insooeric&badge=unity,cs"
-              alt="TechStack1"
-            />
+
+          <div className="right-tab">
+            <div className="skills-stack">
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=python"
+                alt="TechStack1"
+              />
+            </div>
+            <div className="description">
+              Application where AI predicts user&apos;s drawing of digit between
+              0 to 9 with confidency. <br />
+              48000 hand-drawn images from MNIST database are used for training.
+              (separately downloaded)
+              <br />
+              <span
+                className="bold-link"
+                onClick={() => {
+                  window.open(
+                    "https://en.wikipedia.org/wiki/Convolutional_neural_network",
+                    "_blank"
+                  );
+                }}
+              >
+                Convolutional Neural Network
+                <SearchIcon />
+              </span>
+              algorithm and other algorithms used for enhancing the accuracy.
+            </div>
           </div>
         </div>
 
