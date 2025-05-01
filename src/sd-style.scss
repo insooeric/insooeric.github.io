@@ -72,14 +72,14 @@
         grid-column: span 2;
         grid-row: span 2;
       }
-      .project-tts {
+      .project-numberrecognition {
         order: 4;
-        grid-column: span 2;
+        grid-column: span 3;
         grid-row: span 1;
       }
-      .project-wackafood {
+      .project-tts {
         order: 5;
-        grid-column: span 1;
+        grid-column: span 2;
         grid-row: span 1;
       }
       .project-fruitninja {
@@ -89,7 +89,7 @@
       }
       .project-cacatua {
         order: 7;
-        grid-column: span 2;
+        grid-column: span 3;
         grid-row: span 1;
       }
     }
@@ -145,18 +145,28 @@
         grid-column: span 3;
         grid-row: span 2;
       }
-      .project-tts {
+      .project-numberrecognition {
         order: 4;
+        grid-column: span 6;
+        grid-row: span 1;
+      }
+      .project-tts {
+        order: 5;
         grid-column: span 4;
+        grid-row: span 1;
+      }
+      .project-fruitninja {
+        order: 6;
+        grid-column: span 2;
         grid-row: span 1;
       }
 
       .project-cacatua {
-        order: 5;
-        grid-column: span 2;
-        grid-row: span 2;
+        order: 7;
+        grid-column: span 6;
+        grid-row: span 1;
 
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
         .preview-container {
           .title {
@@ -167,16 +177,6 @@
             margin: 0 1rem;
           }
         }
-      }
-      .project-wackafood {
-        order: 6;
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-      .project-fruitninja {
-        order: 7;
-        grid-column: span 2;
-        grid-row: span 1;
       }
     }
   }
@@ -303,63 +303,80 @@
         grid-column: span 2;
         grid-row: span 1;
       }
-      .project-webarcade {
+      .project-numberrecognition {
         order: 3;
         grid-column: span 2;
         grid-row: span 1;
+
+        flex-direction: column;
+
+        .left-tab {
+          width: 100%;
+          justify-content: center;
+        }
       }
-      .project-tts {
+      .project-webarcade {
         order: 4;
         grid-column: span 2;
         grid-row: span 1;
       }
-
-      .project-cacatua {
+      .project-tts {
         order: 5;
         grid-column: span 2;
         grid-row: span 1;
-
-        grid-template-columns: 1fr;
-
-        .preview-container {
-          .title {
-            margin-bottom: 1rem;
-          }
-
-          .glow-card {
-            margin: 0 1rem;
-          }
-        }
       }
-      .project-wackafood {
+      .project-cacatua {
         order: 6;
-        grid-column: span 1;
+        grid-column: span 2;
         grid-row: span 1;
-        .card {
-          aspect-ratio: 1/0.8;
-          .front {
-            img.flip-icon {
-              width: 15px;
-              height: 15px;
-            }
-          }
-        }
       }
       .project-fruitninja {
-        order: 7;
-        grid-column: span 1;
-        grid-row: span 1;
-
-        .card {
-          aspect-ratio: 1/0.8;
-          .front {
-            img.flip-icon {
-              width: 15px;
-              height: 15px;
-            }
-          }
-        }
+        display: none;
       }
+
+      // .project-webarcade {
+      //   order: 3;
+      //   grid-column: span 2;
+      //   grid-row: span 1;
+      // }
+      // .project-tts {
+      //   order: 4;
+      //   grid-column: span 2;
+      //   grid-row: span 1;
+      // }
+
+      // .project-cacatua {
+      //   order: 5;
+      //   grid-column: span 2;
+      //   grid-row: span 1;
+
+      //   grid-template-columns: 1fr;
+
+      //   .preview-container {
+      //     .title {
+      //       margin-bottom: 1rem;
+      //     }
+
+      //     .glow-card {
+      //       margin: 0 1rem;
+      //     }
+      //   }
+      // }
+      // .project-fruitninja {
+      //   order: 7;
+      //   grid-column: span 1;
+      //   grid-row: span 1;
+
+      //   .card {
+      //     aspect-ratio: 1/0.8;
+      //     .front {
+      //       img.flip-icon {
+      //         width: 15px;
+      //         height: 15px;
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 }
