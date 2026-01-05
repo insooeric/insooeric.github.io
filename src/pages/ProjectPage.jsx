@@ -87,7 +87,7 @@ const ProjectPage = () => {
                   className="bold-link"
                   onClick={() => {
                     window.open(
-                      "https://en.wikipedia.org/wiki/Large_language_model/",
+                      "https://en.wikipedia.org/wiki/Large_language_model",
                       "_blank"
                     );
                   }}
@@ -96,7 +96,101 @@ const ProjectPage = () => {
                   <SearchIcon />
                 </span>{" "}
                 <br/>
-                (this will be updated unless i'm lazy)
+                From data collection to sampling, everything is built from scratch.
+                <br/>
+                Over <b>75,000 books</b> from{" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Project_Gutenberg",
+                      "_blank"
+                    );
+                  }}
+                >
+                Project Gutenberg
+                  <SearchIcon />
+                </span>{" "} and datasets from {" "}
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://huggingface.co/",
+                      "_blank"
+                    );
+                  }}
+                >
+                HuggingFace
+                  <SearchIcon />
+                </span>{" "} are used. <br/>
+
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Byte-pair_encoding",
+                      "_blank"
+                    );
+                  }}
+                >
+                  BPE Tokenization
+                  <SearchIcon />
+                </span>{" "},{" "}
+
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Attention_(machine_learning)",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Multi Head Attention
+                  <SearchIcon />
+                </span>{" "},{" "}
+
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Transformer
+                  <SearchIcon />
+                </span>{" "},{" "}
+
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)#Variants",
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                  }}
+                >
+                  LoRA
+                  <SearchIcon />
+                </span>{" "},{" "}
+
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Supervised Fine-Tuning
+                  <SearchIcon />
+                </span>{" "}, etc. techniques are implemented to make a smaller but efficient LLM.
+                <br/>
+                check out the github repo for more details!
               </p>
             </div>
           </div>
