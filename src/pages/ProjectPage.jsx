@@ -191,7 +191,7 @@ const ProjectPage = () => {
                 </span>{" "}, etc. techniques are implemented to make a smaller but efficient LLM.
                 <br/>
                 Check out the github repo for more details!
-                <br/>
+                <br/><br/>
               </p>
             </div>
           </div>
