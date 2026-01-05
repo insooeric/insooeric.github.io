@@ -190,7 +190,7 @@ const ProjectPage = () => {
                   <SearchIcon />
                 </span>{" "}, etc. techniques are implemented to make a smaller but efficient LLM.
                 <br/>
-                check out the github repo for more details!
+                Check out the github repo for more details!
               </p>
             </div>
           </div>
