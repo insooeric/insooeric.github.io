@@ -96,7 +96,7 @@ const HomePage = () => {
   };
 
   const handleLinkedInClick = () => {
-    window.open("https://www.linkedin.com/in/eric-son-6742b7173/", "_blank");
+    window.open("https://www.linkedin.com/in/insoo-son-6742b7173/", "_blank");
   };
 
   const handleAboutClick = () => {

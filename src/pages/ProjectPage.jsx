@@ -1,4 +1,4 @@
-//import stemma_logo_pic from "../img/project/stemma_logo_pic.svg";
+import llm_pic from "../img/project/llm_readme.png";
 import stemma_pic from "../img/stemma_pic.png";
 import gamepad_icon from "../img/project/gamepad_icon.svg";
 import webarcade_pic from "../img/webarcade_pic.png";
@@ -17,6 +17,91 @@ const ProjectPage = () => {
   return (
     <div className="project-page">
       <div className="grid-container">
+        
+        <div className="box project-chatbot">
+          <button
+            onClick={() =>
+              window.open(
+                "https://github.com/insooeric/LLM_Small#readme",
+                "_blank"
+              )
+            }
+          >
+            <span className="button_top">
+              <GithubIcon className="github-icon" />
+            </span>
+          </button>
+
+          <div className="card">
+            <div className="browser">
+              <div className="tabs-head">
+                <div className="tabs">
+                  <div className="tab-open">
+                    <div className="rounded-l"><div className="mask-round"></div></div>
+                    <span>GitHub.com</span>
+                    <div className="close-tab">✕</div>
+                    <div className="rounded-r"><div className="mask-round"></div></div>
+                  </div>
+                </div>
+
+                <div className="window-opt">
+                  <button>-</button>
+                  <button>□</button>
+                  <button className="window-close">✕</button>
+                </div>
+              </div>
+
+              <div className="head-browser">
+                <button>←</button>
+                <button disabled="">→</button>
+
+                <input
+                  type="text"
+                  name=""
+                  id="something"
+                  placeholder="Search Google or type URL"
+                  value="https://github.com/insooeric/LLM_Small#readme"
+                />
+
+                <button>⋮</button>
+
+                <button className="star">✰</button>
+              </div>
+              <div className="content">
+                <img src={llm_pic} alt="LLM Small Image" />
+              </div>
+            </div>
+
+          </div>
+          <div className="details">
+            <div className="skills-stack">
+              <img
+                className="skill-icon"
+                src="https://stemma.onrender.com/api/badge?user=insooeric&badge=python"
+                alt="TechStack1"
+              />
+            </div>
+            <div className="description">
+              <p>
+                <span
+                  className="bold-link"
+                  onClick={() => {
+                    window.open(
+                      "https://en.wikipedia.org/wiki/Large_language_model/",
+                      "_blank"
+                    );
+                  }}
+                >
+                  Large Language Model 
+                  <SearchIcon />
+                </span>{" "}
+                <br/>
+                (this will be updated unless i'm lazy)
+              </p>
+            </div>
+          </div>
+        </div>
+        
         <div className="box project-stemma">
           <button
             onClick={() =>
@@ -117,7 +202,6 @@ const ProjectPage = () => {
                     window.open("https://stemma.vercel.app/", "_blank");
                   }}
                 >
-                  {/* <img src={stemma_logo_pic} className="inline" alt="logo" /> */}
                   Stemma
                   <SearchIcon />
                 </span>{" "}
@@ -183,7 +267,7 @@ const ProjectPage = () => {
             </div>
             <div className="description">
               <p>
-                A{" "}
+                {" "}
                 <span
                   className="bold-link"
                   onClick={() => {
